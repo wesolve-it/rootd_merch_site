@@ -5,6 +5,19 @@
   <title>Rootd. - Merch</title>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    @keyframes slide {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-320%); }
+    }
+    .logo-slider {
+      animation: slide 20s linear infinite;
+    }
+    .logo-slider:hover {
+      animation-play-state: paused;
+    }
+  </style>
 </head>
 <body>
   <div>
@@ -13,44 +26,67 @@
 
 <!-- Hero Section -->
 
-  <div class="relative h-screen bg-cover bg-center" style="background-image: url('./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg');">
+  <div class="relative bg-cover bg-center" style="background-image: url('./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg');">
     <!-- <div class="absolute inset-0 bg-black opacity-50"></div> -->
-    <div class="relative flex items-start justify-start h-full p-8">
+    <div class="relative flex items-start justify-start p-16 xl:p-16 pl-4 pr-32">
       <div class="bg-white bg-opacity-50 text-black xl:w-3/6 xl:p-20 p-8 rounded-lg">
-        <h1 class="text-2xl xl:text-4xl font-bold mb-4 uppercase">Mehr als nur Textildruck</h1>
-        <p class="xl:text-xl font-light">Wie bieten nicht nur toll bedruckte Textilien, sondern wir verstehen unser Handwerk. Das fänt bereits bei der Beratung und der Auswahl von Produkten an und zieht sich über den gesamten Veredelungsprozess hinfort. Als regionaler Partner möchten wir dir genau die Produkte anbieten, die zu dir passen. Abhängig vom Budget und dem Einsatzzweck kannst du aus einem breit gefächerten Spektrum an Drucktechniken auswählen. Darüber hinaus kümmern wir uns um die grafische Aufbereitung, etwaige Visualisierungen und falls gewünscht um umfassende Marketingmaßnahmen.</p>
+        <h1 class="text-xl xl:text-4xl font-bold mb-4 uppercase">Mehr als nur Textildruck</h1>
+        <p class="xl:text-xl text-sm font-light">Wie bieten nicht nur toll bedruckte Textilien, sondern wir verstehen unser Handwerk. Das fänt bereits bei der Beratung und der Auswahl von Produkten an und zieht sich über den gesamten Veredelungsprozess hinfort. Als regionaler Partner möchten wir dir genau die Produkte anbieten, die zu dir passen. Abhängig vom Budget und dem Einsatzzweck kannst du aus einem breit gefächerten Spektrum an Drucktechniken auswählen. Darüber hinaus kümmern wir uns um die grafische Aufbereitung, etwaige Visualisierungen und falls gewünscht um umfassende Marketingmaßnahmen.</p>
       </div>
     </div>
   </div>
 
   <!-- End Hero Section -->
 
+  <!-- Customers Section -->
+
+  <div class="px-6 mt-12 mb-8 max-w-screen-2xl mx-auto">
+    <h3 class="uppercase font-extralight text-sm">Erfolgreiche Projekte</h3>
+    <h1 class="uppercase text-xl font-bold xl:text-4xl">Unsere zufriedenen Kunden</h1>
+  </div>
+
+  <div class="flex overflow-x-hidden space-x-16 mb-16">
+    <div class="flex space-x-16 logo-slider">
+      <img loading="lazy" src="./assets/Logo FC Ottensoos.png" class="max-h-24 pl-6" alt="Image 1" />
+      <img loading="lazy" src="./assets/Logo FC Schnaittach.png" class="max-h-24" alt="Image 2" />
+      <img loading="lazy" src="./assets/Logo WE SOLVE IT.png" class="max-h-24" alt="Image 9" />
+      <img loading="lazy" src="./assets/Logo FW Ottensoos.png" class="max-h-24" alt="Image 3" />
+      <img loading="lazy" src="./assets/Logo Metzgerei Walter.png" class="max-h-24" alt="Image 4" />
+      <img loading="lazy" src="./assets/Logo Reitverein Germersberg.png" class="max-h-24" alt="Image 5" />
+      <img loading="lazy" src="./assets/Logo Skiclub Ottensoos.png" class="max-h-24" alt="Image 6" />
+      <img loading="lazy" src="./assets/Logo Tennisclub Schnaittach.png" class="max-h-24" alt="Image 7" />
+      <img loading="lazy" src="./assets/Logo TSV Neunhof.png" class="max-h-24 pr-6" alt="Image 8" />
+    </div>
+  </div>
+
+  <!-- End Customers Section -->
+
   <!-- Services Section -->
 
-  <div class="mt-12 max-w-screen-xl mx-auto">
+  <div class="mt-12 max-w-screen-2xl mx-auto">
     <div class="px-6">
       <h3 class="uppercase font-extralight text-sm">Serviceportfolio</h3>
-      <h1 class="uppercase text-3xl font-bold">Unsere Leistungen auf einen Blick</h1>
+      <h1 class="uppercase text-3xl font-bold xl:text-4xl">Unsere Leistungen auf einen Blick</h1>
     </div>
     <div class="flex flex-col lg:flex-row">
       <div class="mt-12 px-8">
         <img src="./assets/Beratung.svg" alt="Beratung" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-2xl text-center mb-4">Individuelle Beratung</h3>
+        <h3 class="font-bold text-2xl xl:text-3xl text-center mb-4">Individuelle Beratung</h3>
         <p class="text-center font-extralight">Wir beantworten alle deine Fragen und beraten dich ausführlich zu allen Themen rund um den Textildruck.</p>
       </div>
       <div class="mt-12 px-8">
         <img src="./assets/Icon.svg" alt="Grafikservice" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-2xl text-center mb-4">Grafikservice</h3>
+        <h3 class="font-bold text-2xl text-center mb-4 xl:text-3xl">Grafikservice</h3>
         <p class="text-center font-extralight">Unser Grafikservice gestaltet, entwirft und passt auf Wunsch deine Druckdaten an.</p>
       </div>
       <div class="mt-12 px-8">
         <img src="./assets/Qualitaet-Werbefant.svg" alt="Qualität" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-2xl text-center mb-4">Höchste Qualität</h3>
+        <h3 class="font-bold text-2xl text-center mb-4 xl:text-3xl">Höchste Qualität</h3>
         <p class="text-center font-extralight">Wir verwenden ausschließlich bewährte Markenware - vom Textil über die Tinte bis hin zum Verbrauchsmaterial.</p>
       </div>
       <div class="mt-12 px-8">
         <img src="./assets/Region.svg" alt="Region" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-2xl text-center mb-4">Regional</h3>
+        <h3 class="font-bold text-2xl text-center mb-4 xl:text-3xl">Regional</h3>
         <p class="text-center font-extralight">Wir produzieren in unserer Heimat und zahlen hier Steuern und faire Löhne. Hand drauf.</p>
       </div>
     </div>
@@ -66,7 +102,7 @@
       <h2 class="text-2xl font-bold uppercase mb-4">Realisierte Projekte</h2>
       <p class="font-extralight">Eine kleine Auswahl bereits realisierter Projekte findest du hier. Aktuelles und Neuigkeiten findest du entweder in unserem Blog oder auf unserer Instagram-Seite. Viel Spaß beim Stöbern!</p>
     </div>
-    <div class="flex flex-row mt-10 gap-4">
+    <div class="flex flex-row mt-10 gap-4 overflow-x-auto">
       <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt="" class="w-32 h-32 object-cover" />
       <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt="" class="w-32 h-32 object-cover" />
       <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt=""  class="w-32 h-32 object-cover"/>
@@ -78,30 +114,30 @@
 
   <!-- Individuals Section -->
 
-  <div class="max-w-screen-xl mx-auto mt-12 px-6">
+  <div class="max-w-screen-2xl mx-auto mt-12 px-6">
     <div class="mb-10">
       <h3 class="uppercase font-extralight text-sm">Leistungsportfolio</h3>
-      <h1 class="uppercase text-3xl font-bold">Wann sollte ich Rootd. Merch kontaktieren?</h1>
+      <h1 class="uppercase text-3xl font-bold xl:text-4xl">Wann sollte ich Rootd. Merch kontaktieren?</h1>
     </div>
   <div class="flex flex-col lg:flex-row gap-8">
     <div>
       <div class="flex flex-row items-center mb-4">
         <img src="./assets/icon_gewerbe.svg" alt="Gewerbe" class="w-12 h-12 mr-4" />
-        <h3 class="uppercase font-bold text-xl">Firmen</h3>
+        <h3 class="uppercase font-bold text-xl xl:text-2xl">Firmen</h3>
       </div>
         <p class="font-extralight mt-2">Wir produzieren Arbeitsbekleidung für jegliche Anforderungsprofile mit besonderer Haltbarkeit. Egal ob Kochwäsche, Stick, Reflexdruck oder Sonderfarben.</p>
     </div>
     <div>
       <div class="flex flex-row items-center mb-4">
         <img src="./assets/icon_vereine.svg" alt="Vereine" class="w-12 h-12 mr-4" />
-        <h3 class="uppercase font-bold text-xl">Vereine</h3>
+        <h3 class="uppercase font-bold text-xl xl:text-2xl">Vereine</h3>
       </div>
         <p class="font-extralight mt-2">Wir fertigen Mannschaftsbekleidung und Trikots für Sportvereine, beflocken Fußballtrikots, stellen Teambekleidung für Events her und kümmern uns um alle Vereinsanfragen.</p>
     </div>
     <div>
       <div class="flex flex-row mb-4 items-center">
         <img src="./assets/icon_veranstaltungen.svg" alt="Veranstaltungen" class="w-12 h-12 mr-4" />
-        <h3 class="uppercase font-bold text-xl">Veranstaltungen</h3>
+        <h3 class="uppercase font-bold text-xl xl:text-2xl">Veranstaltungen</h3>
       </div>
       <p class="font-extralight mt-2">Egal ob Volkslauf, Marathon, großes Festival oder kleine Grillparty mit individuellen Shirts: auch hier sind wir dein Ansprechpartner und kümmern uns um deine textile Ausstattung.</p>
     </div>
@@ -110,9 +146,40 @@
 
   <!-- End Individuals Section -->
 
-  <!-- Customers Section -->
-
-  <!-- End Customers Section -->
-
+  <!-- Footer Section -->
+  <div class="bg-black text-white">
+    <div class="justify-between flex flex-col lg:flex-row max-w-screen-2xl mx-auto px-6">
+    <!-- <div><img src="./assets/ROOTED MERCH LOGO.svg" alt="Merch Logo" /></div> -->
+    <div class="mt-6 mb-10">
+      <h3 class="font-bold mb-4">ROOTD. - Merchandise</h3>
+      <p>Inh. Dominik Umbeer</p>
+      <p>Kirchenweg 1b</p>
+      <p>91220 Schnaittach</p>
+    </div>
+    <div class="mt-10 flex flex-col gap-4">
+      <h3 class="font-bold mb-4">Allgemeines</h3>
+      <p>Einkaufsbedingungen</p>
+      <p>AGB</p>
+      <p>Impressum</p>
+      <p>Datenschutz</p>
+      <p>Kontaktformular</p>
+      <p>oder direkt an: <span class="font-bold">kontakt@rootd.de</span></p>
+    </div>
+    <div class="mb-20">
+      <ul class="space-y-4 mt-10">
+        <h3 class="font-bold mb-4">Social Media</h3>
+        <li class="flex items-center">
+          <i class="fab fa-instagram mr-2"></i>
+          <span>@rootd_merch</span>
+        </li>
+        <li class="flex items-center">
+          <i class="fab fa-linkedin mr-2"></i>
+          <span>Rootd.</span>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+  <!-- End Footer Section -->
 </body>
 </html>
