@@ -26,12 +26,12 @@
 
 <!-- Hero Section -->
 
-  <div class="relative bg-cover bg-center" style="background-image: url('./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg');">
+  <div class="relative bg-cover bg-center" style="background-image: url('./assets/Unbenannt.jpg');">
     <!-- <div class="absolute inset-0 bg-black opacity-50"></div> -->
     <div class="relative flex items-start justify-start p-16 xl:p-16 pl-4 pr-32">
       <div class="bg-white bg-opacity-50 text-black xl:w-2/6 xl:p-20 p-8 rounded-lg">
-        <h1 class="text-xl xl:text-4xl font-bold mb-4 uppercase">Mehr als nur Textildruck</h1>
-        <p class="xl:text-xl text-sm font-light">Wie bieten nicht nur toll bedruckte Textilien, sondern wir verstehen unser Handwerk. Das fänt bereits bei der Beratung und der Auswahl von Produkten an und zieht sich über den gesamten Veredelungsprozess hinfort. Als regionaler Partner möchten wir dir genau die Produkte anbieten, die zu dir passen. Abhängig vom Budget und dem Einsatzzweck kannst du aus einem breit gefächerten Spektrum an Drucktechniken auswählen. Darüber hinaus kümmern wir uns um die grafische Aufbereitung, etwaige Visualisierungen und falls gewünscht um umfassende Marketingmaßnahmen.</p>
+        <h1 class="text-xl xl:text-4xl font-bold mb-4 uppercase">Eure Individuellen Wünsche stilvoll umgesetzt</h1>
+        <p class="xl:text-xl text-sm font-light">Höchste Qualität ist unser Markenzeichen! Zusätzlich beraten wir Euch noch in der richtigen Auswahl eurer Wunschartikel und passen Eure Designwünsche individuell an. Wir verstehen uns als Euer regionaler Partner mit dem Fokus auf langlebigen Textilien & Merch Produkten. Schreibt uns gerne an und erhaltet eine kostenlose Erstberatung für Euer Unternehmen, Verein oder ein anstehendes Event.</p>
       </div>
     </div>
   </div>
@@ -45,19 +45,92 @@
     <h1 class="uppercase text-xl font-bold xl:text-4xl">Unsere zufriedenen Kunden</h1>
   </div>
 
-  <div class="flex items-start flex-row justify-between overflow-x-hidden space-x-16 mb-16">
-    <div class="flex flex-row space-x-16 logo-slider">
-      <img loading="lazy" src="./assets/Logo FC Ottensoos.png" class="max-h-24 pl-6" alt="Image 1" />
-      <img loading="lazy" src="./assets/Logo FC Schnaittach.png" class="max-h-24" alt="Image 2" />
-      <img loading="lazy" src="./assets/Logo WE SOLVE IT.png" class="max-h-24" alt="Image 9" />
-      <img loading="lazy" src="./assets/Logo FW Ottensoos.png" class="max-h-24" alt="Image 3" />
-      <img loading="lazy" src="./assets/Logo Metzgerei Walter.png" class="max-h-24" alt="Image 4" />
-      <img loading="lazy" src="./assets/Logo Reitverein Germersberg.png" class="max-h-24" alt="Image 5" />
-      <img loading="lazy" src="./assets/Logo Skiclub Ottensoos.png" class="max-h-24" alt="Image 6" />
-      <img loading="lazy" src="./assets/Logo Tennisclub Schnaittach.png" class="max-h-24" alt="Image 7" />
-      <img loading="lazy" src="./assets/Logo TSV Neunhof.png" class="max-h-24 pr-6" alt="Image 8" />
+  <div class="w-full overflow-hidden h-32 mb-0">
+    <div class="logo-container flex items-center h-full animate-scroll">
+      <div class="logo-track flex items-center">
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo FC Ottensoos.png" alt="1. FC Nürnberg Logo" class="h-20" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo FC Schnaittach.png" alt="Alfafood Logo" class="h-20" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo FW Ottensoos.png" alt="LU-BU Logo" class="h-14" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo WE SOLVE IT.png" alt="Tobias Herrmann Logo" class="h-14" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo Metzgerei Walter.png" alt="Sport Weber Logo" class="h-20" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo Reitverein Germersberg.png" alt="Rootd. Logo" class="h-12" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo Skiclub Ottensoos.png" alt="dieschokoecke Logo" class="h-16" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo Tennisclub Schnaittach.png" alt="dieschokoecke Logo" class="h-16" />
+        </div>
+        <div class="flex-shrink-0 mx-12 xl:mx-16">
+          <img src="./assets/Logo TSV Neunhof.png" alt="dieschokoecke Logo" class="h-16" />
+        </div>
+      </div>
     </div>
   </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const track = document.querySelector(".logo-track");
+      const container = document.querySelector(".logo-container");
+  
+      if (track && container) {
+        const logos = Array.from(track.children);
+        logos.forEach(logo => {
+          const clone = logo.cloneNode(true);
+          track.appendChild(clone);
+        });
+  
+        const trackWidth = (track.scrollWidth / 2) + 25;
+        track.style.setProperty("--scroll-width", `${trackWidth}px`);
+      };
+    })
+  
+    window.addEventListener("resize", () => {
+    const track = document.querySelector(".logo-track");
+    if (track) {
+      const trackWidth = (track.scrollWidth / 2) + 25;
+      track.style.setProperty("--scroll-width", `${trackWidth}px`);
+    }
+  });
+  </script>
+  
+  <style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-1 * var(--scroll-width)));
+    }
+  }
+  
+  .logo-container {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+  
+  .logo-track {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    will-change: transform;
+  }
+  
+  .logo-container:hover .logo-track {
+    animation-play-state: paused;
+  }
+  </style>
 
   <!-- End Customers Section -->
 
@@ -71,23 +144,23 @@
     <div class="flex flex-col lg:flex-row">
       <div class="mt-12 px-8">
         <img src="./assets/Beratung.svg" alt="Beratung" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-xl xl:text-3xl text-center mb-4">Individuelle Beratung</h3>
-        <p class="text-center font-extralight">Wir beantworten alle deine Fragen und beraten dich ausführlich zu allen Themen rund um den Textildruck.</p>
+        <h3 class="font-bold text-xl xl:text-3xl text-center mb-4">Umfassende Beratung</h3>
+        <p class="text-center text-sm lg:text-base font-extralight">Wir beraten Euch gerne individuell zu Euren Wünschen & Fragen rund um das Thema Textildruck.</p>
       </div>
       <div class="mt-12 px-8">
         <img src="./assets/Icon.svg" alt="Grafikservice" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-xl text-center mb-4 xl:text-3xl">Grafikservice</h3>
-        <p class="text-center font-extralight">Unser Grafikservice gestaltet, entwirft und passt auf Wunsch deine Druckdaten an.</p>
+        <h3 class="font-bold text-xl text-center mb-4 xl:text-3xl">Design-Service</h3>
+        <p class="text-center text-sm lg:text-base font-extralight">Wir passen die Drucke individuell nach Euren Wünschen an und übernehmen die komplette Druckdatenerstellung.</p>
       </div>
       <div class="mt-12 px-8">
         <img src="./assets/Qualitaet-Werbefant.svg" alt="Qualität" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-xl text-center mb-4 xl:text-3xl">Höchste Qualität</h3>
-        <p class="text-center font-extralight">Wir verwenden ausschließlich bewährte Markenware - vom Textil über die Tinte bis hin zum Verbrauchsmaterial.</p>
+        <h3 class="font-bold text-xl text-center mb-4 xl:text-3xl">Qualitäts-Versprechen</h3>
+        <p class="text-center text-sm lg:text-base font-extralight">Wir arbeiten überwiegend mit bewährten Qualitätsmarken zusammen und achten dabei auch noch auf die biologische Herkunft der Textilien.</p>
       </div>
       <div class="mt-12 px-8">
         <img src="./assets/Region.svg" alt="Region" class="w-28 mx-auto mb-6" />
-        <h3 class="font-bold text-xl text-center mb-4 xl:text-3xl">Regional</h3>
-        <p class="text-center font-extralight">Wir produzieren in unserer Heimat und zahlen hier Steuern und faire Löhne. Hand drauf.</p>
+        <h3 class="font-bold text-xl text-center mb-4 xl:text-3xl">Regionalität</h3>
+        <p class="text-center text-sm lg:text-base font-extralight">Wir drucken unsere Artikel selbst in Schnaittach bei Nürnberg. Dadurch entstehen für uns und Euch kurze Lieferwege.</p>
       </div>
     </div>
   </div>
@@ -97,15 +170,15 @@
   <!-- Showroom Section -->
 
   <div class="bg-black px-6 mt-10 pb-10">
-    <div class="max-w-screen-xl mx-auto">
+    <div class="max-w-screen-2xl mx-auto">
     <div class="text-white pt-6">
-      <h2 class="text-xl font-bold uppercase mb-4">Realisierte Projekte</h2>
-      <p class="font-extralight">Eine kleine Auswahl bereits realisierter Projekte findest du hier. Aktuelles und Neuigkeiten findest du entweder in unserem Blog oder auf unserer Instagram-Seite. Viel Spaß beim Stöbern!</p>
+      <h2 class="text-xl font-bold uppercase mb-4 xl:text-4xl">Realisierte Projekte</h2>
+      <p class="font-extralight">Hier seht ihr eine kleine Auswahl unserer aktuellen Projekte die wir mit Unternehmen & Vereinen in der Region bereits umsetzen konnten! Für weitere Informationen besucht uns gerne auf unserer <a href="#" class="underline">Instagramseite</a>.</p>
     </div>
     <div class="flex flex-row mt-10 gap-4 overflow-x-auto">
-      <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt="" class="w-32 h-32 object-cover" />
-      <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt="" class="w-32 h-32 object-cover" />
-      <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt=""  class="w-32 h-32 object-cover"/>
+      <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt="" class="w-32 h-32 xl:w-64 xl:h-64 object-cover" />
+      <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt="" class="w-32 h-32 xl:w-64 xl:h-64 object-cover" />
+      <img src="./assets/keagan-henman-xPJYL0l5Ii8-unsplash.jpg" alt=""  class="w-32 h-32 xl:w-64 xl:h-64 object-cover"/>
     </div>
   </div>
   </div>
@@ -132,14 +205,14 @@
         <img src="./assets/icon_vereine.svg" alt="Vereine" class="w-12 h-12 mr-4" />
         <h3 class="uppercase font-bold text-lg xl:text-2xl">Vereine</h3>
       </div>
-        <p class="font-extralight text-sm xl:text-base mt-2">Wir fertigen Mannschaftsbekleidung und Trikots für Sportvereine, beflocken Fußballtrikots, stellen Teambekleidung für Events her und kümmern uns um alle Vereinsanfragen.</p>
+        <p class="font-extralight text-sm lg:text-base mt-2">Wir fertigen Mannschaftsbekleidung und Trikots für Sportvereine, beflocken Fußballtrikots, stellen Teambekleidung für Events her und kümmern uns um alle Vereinsanfragen.</p>
     </div>
     <div>
       <div class="flex flex-row mb-4 items-center">
         <img src="./assets/icon_veranstaltungen.svg" alt="Veranstaltungen" class="w-12 h-12 mr-4" />
         <h3 class="uppercase font-bold text-lg xl:text-2xl">Veranstaltungen</h3>
       </div>
-      <p class="font-extralight text-sm xl:text-base mt-2">Egal ob Volkslauf, Marathon, großes Festival oder kleine Grillparty mit individuellen Shirts: auch hier sind wir dein Ansprechpartner und kümmern uns um deine textile Ausstattung.</p>
+      <p class="font-extralight text-sm lg:text-base mt-2">Egal ob Volkslauf, Marathon, großes Festival oder kleine Grillparty mit individuellen Shirts: auch hier sind wir dein Ansprechpartner und kümmern uns um deine textile Ausstattung.</p>
     </div>
   </div>
 </div>
