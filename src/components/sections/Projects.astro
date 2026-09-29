@@ -1,0 +1,31 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+import { compact } from '../../lib/data';
+
+interface Props {
+  data: NonNullable<Home['projects']>;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="mt-10 bg-black px-6 pb-10">
+  <div class="mx-auto max-w-screen-2xl">
+    <div class="pt-6 text-white">
+      <h2 class="mb-4 text-xl font-bold uppercase xl:text-4xl" data-tina-field={tinaField(data, 'heading')}>{data.heading}</h2>
+      <p class="font-extralight" data-tina-field={tinaField(data, 'text')}>{data.text}</p>
+    </div>
+    <div class="mt-10 flex flex-row gap-4 overflow-x-auto">
+      {compact(data.images).filter((img) => img.image).map((img) => (
+        <img
+          src={img.image}
+          alt={img.alt ?? ''}
+          loading="lazy"
+          class="h-48 w-48 shrink-0 object-cover xl:h-64 xl:w-64"
+          data-tina-field={tinaField(img)}
+        />
+      ))}
+    </div>
+  </div>
+</section>

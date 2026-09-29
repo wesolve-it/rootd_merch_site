@@ -1,0 +1,29 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+import { compact } from '../../lib/data';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  data: NonNullable<Home['services']>;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="mx-auto mt-12 max-w-screen-2xl">
+  <div class="px-6">
+    <SectionHeading section={data} />
+  </div>
+  <div class="flex flex-col lg:flex-row">
+    {compact(data.items).map((item) => (
+      <div class="mt-12 flex-1 px-8" data-tina-field={tinaField(item)}>
+        {item.icon && (
+          <img src={item.icon} alt="" loading="lazy" class="mx-auto mb-6 h-20 w-auto xl:mb-7" data-tina-field={tinaField(item, 'icon')} />
+        )}
+        <h3 class="mb-4 text-center text-xl font-bold xl:text-3xl" data-tina-field={tinaField(item, 'title')}>{item.title}</h3>
+        <p class="text-center text-sm font-extralight lg:text-base" data-tina-field={tinaField(item, 'text')}>{item.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

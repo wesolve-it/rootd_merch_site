@@ -1,0 +1,40 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getSettings } from '../lib/data';
+import { islands } from '../lib/islands';
+import '../styles/global.css';
+
+const settings = (await getSettings()).data?.settings;
+const title = settings?.seo?.title ?? 'ROOTED - MERCH';
+const description = settings?.seo?.description ?? '';
+const ogImage = new URL(settings?.logo ?? '/favicon.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href={Astro.site} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={Astro.site} />
+    <meta property="og:image" content={ogImage} />
+  </head>
+  <body class="text-black antialiased">
+    <TinaIsland name="header" wrapper={islands.header.wrapper}>
+      <Header settings={settings} />
+    </TinaIsland>
+    <slot />
+    <TinaIsland name="footer" wrapper={islands.footer.wrapper}>
+      <Footer settings={settings} />
+    </TinaIsland>
+  </body>
+</html>

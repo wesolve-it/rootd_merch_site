@@ -1,0 +1,31 @@
+---
+import type { Home } from '../lib/data';
+import { getSettings } from '../lib/data';
+import Hero from './sections/Hero.astro';
+import CustomerLogos from './sections/CustomerLogos.astro';
+import Services from './sections/Services.astro';
+import Testimonials from './sections/Testimonials.astro';
+import Projects from './sections/Projects.astro';
+import Pricing from './sections/Pricing.astro';
+import Process from './sections/Process.astro';
+
+interface Props {
+  home?: Home | null;
+}
+
+const { home } = Astro.props;
+// E-Mail für die Anfrage-Buttons kommt aus den allgemeinen Einstellungen
+const email = (await getSettings()).data?.settings?.email;
+---
+
+{home && (
+  <>
+    {home.hero && <Hero data={home.hero} email={email} />}
+    {home.customers?.show && <CustomerLogos data={home.customers} />}
+    {home.services?.show && <Services data={home.services} />}
+    {home.testimonials?.show && <Testimonials data={home.testimonials} />}
+    {home.projects?.show && <Projects data={home.projects} />}
+    {home.pricing?.show && <Pricing data={home.pricing} email={email} />}
+    {home.process?.show && <Process data={home.process} email={email} />}
+  </>
+)}

@@ -1,0 +1,45 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+import { compact } from '../../lib/data';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  data: NonNullable<Home['customers']>;
+}
+
+const { data } = Astro.props;
+const logos = compact(data.logos).filter((logo) => logo.image);
+
+const sizes: Record<string, string> = {
+  sm: 'h-14 xl:h-20',
+  md: 'h-16 xl:h-24',
+  lg: 'h-20 xl:h-28',
+};
+---
+
+<section>
+  <div class="mx-auto mt-12 mb-8 max-w-screen-2xl px-6">
+    <SectionHeading section={data} />
+  </div>
+
+  <div class="group h-32 w-full overflow-hidden mask-x-from-90% mask-x-to-100%">
+    <!-- Die Liste wird doppelt gerendert, damit die Endlos-Animation nahtlos ist -->
+    <div class="flex h-full w-max animate-logo-scroll items-center group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+      {[false, true].map((duplicate) => (
+        <ul class="flex items-center" aria-hidden={duplicate ? 'true' : undefined}>
+          {logos.map((logo) => (
+            <li class="shrink-0 px-12 xl:px-16" data-tina-field={duplicate ? undefined : tinaField(logo)}>
+              <img
+                src={logo.image}
+                alt={duplicate ? '' : logo.name}
+                loading="lazy"
+                class:list={['w-auto', sizes[logo.size ?? 'md'] ?? sizes.md]}
+              />
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+import { compact } from '../../lib/data';
+import SectionHeading from '../SectionHeading.astro';
+import CtaButton from '../CtaButton.astro';
+
+interface Props {
+  data: NonNullable<Home['process']>;
+  email?: string | null;
+}
+
+const { data, email } = Astro.props;
+const steps = compact(data.steps);
+---
+
+<section class="mx-auto mt-12 mb-12 max-w-screen-2xl px-6">
+  <div class="mb-10">
+    <SectionHeading section={data} />
+  </div>
+
+  <ol class="flex flex-col gap-8 lg:flex-row">
+    {steps.map((step, index) => (
+      <>
+        {index > 0 && (
+          <li class="flex justify-center" aria-hidden="true">
+            <div class="h-10 w-px bg-gray-300"></div>
+          </li>
+        )}
+        <li class="flex-1" data-tina-field={tinaField(step)}>
+          <h3 class="mb-4 text-lg font-bold uppercase xl:text-2xl" data-tina-field={tinaField(step, 'title')}>
+            {index + 1}. {step.title}
+          </h3>
+          <p class="mt-2 text-sm font-extralight lg:text-base" data-tina-field={tinaField(step, 'text')}>{step.text}</p>
+        </li>
+      </>
+    ))}
+  </ol>
+
+  {data.ctaLabel && (
+    <div class="mt-14 flex justify-center">
+      <CtaButton email={email} class="mt-4 rounded-md px-8 py-4 text-sm" data-tina-field={tinaField(data, 'ctaLabel')}>
+        {data.ctaLabel}
+      </CtaButton>
+    </div>
+  )}
+</section>

@@ -1,0 +1,35 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Settings } from '../lib/data';
+import { compact } from '../lib/data';
+
+interface Props {
+  settings?: Settings | null;
+}
+
+const { settings } = Astro.props;
+const footer = settings?.footer;
+const links = compact(footer?.links);
+---
+
+<div class="bg-black text-white">
+  <div class="mx-auto flex max-w-screen-2xl flex-col justify-between px-6 lg:flex-row xl:justify-start xl:gap-16">
+    <div class="mt-6 mb-10">
+      <h3 class="mb-4 font-bold" data-tina-field={footer && tinaField(footer, 'company')}>{footer?.company}</h3>
+      <div data-tina-field={footer && tinaField(footer, 'addressLines')}>
+        {compact(footer?.addressLines).map((line) => <p>{line}</p>)}
+      </div>
+    </div>
+    <div class="mt-10 mb-20 flex flex-col gap-4 xl:mt-6 xl:gap-2">
+      <h3 class="mb-4 font-bold" data-tina-field={footer && tinaField(footer, 'linksHeading')}>{footer?.linksHeading}</h3>
+      {links.map((link) => (
+        <a href={link.url} data-tina-field={tinaField(link)}>{link.label}</a>
+      ))}
+      {settings?.email && (
+        <a href={`mailto:${settings.email}`} data-tina-field={tinaField(settings, 'email')}>
+          {footer?.emailPrefix} <span class="font-semibold underline">{settings.email}</span>
+        </a>
+      )}
+    </div>
+  </div>
+</div>
