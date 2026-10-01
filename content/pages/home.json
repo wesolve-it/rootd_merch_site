@@ -1,0 +1,147 @@
+{
+  "hero": {
+    "heading": "Individuell gestaltete Kleidung für Vereine & Unternehmen",
+    "subheading": "Hochwertig, langlebig und lokal bedruckt – direkt aus der Region Nürnberg",
+    "ctaLabel": "Jetzt Musterdesign anfragen",
+    "image": "/uploads/hero.webp"
+  },
+  "customers": {
+    "show": true,
+    "kicker": "Erfolgreiche Projekte",
+    "heading": "Unsere zufriedenen Kunden",
+    "logos": [
+      { "name": "1. FC Ottensoos", "image": "/uploads/logos/fc-ottensoos.webp", "size": "lg" },
+      { "name": "FC Schnaittach", "image": "/uploads/logos/fc-schnaittach.webp", "size": "lg" },
+      { "name": "Freie Wählergemeinschaft Ottensoos", "image": "/uploads/logos/fw-ottensoos.webp", "size": "md" },
+      { "name": "WE SOLVE IT", "image": "/uploads/logos/we-solve-it.webp", "size": "sm" },
+      { "name": "Metzgerei Walter", "image": "/uploads/logos/metzgerei-walter.webp", "size": "lg" },
+      { "name": "Reitverein Germersberg", "image": "/uploads/logos/reitverein-germersberg.webp", "size": "md" },
+      { "name": "Skiclub Ottensoos", "image": "/uploads/logos/skiclub-ottensoos.webp", "size": "lg" },
+      { "name": "Tennisclub Schnaittach", "image": "/uploads/logos/tennisclub-schnaittach.webp", "size": "md" },
+      { "name": "TSV Neunhof", "image": "/uploads/logos/tsv-neunhof.webp", "size": "md" }
+    ]
+  },
+  "services": {
+    "show": true,
+    "kicker": "Serviceportfolio",
+    "heading": "Unsere Leistungen auf einen Blick",
+    "items": [
+      {
+        "icon": "/uploads/icons/design.webp",
+        "title": "Wir gestalten euer Design individuell",
+        "text": "Ob schlichtes Logo oder kreatives Design – unser Grafikservice steht euch mit fachkundiger Beratung und individuellen Gestaltungsideen zur Seite."
+      },
+      {
+        "icon": "/uploads/icons/lokal.webp",
+        "title": "Wir bedrucken alles lokal selbst",
+        "text": "An unserem Standort bei Nürnberg bedrucken wir Hoodies, T-Shirts, Caps und viele weitere Artikel individuell nach euren Wünschen."
+      },
+      {
+        "icon": "/uploads/icons/baumwolle.webp",
+        "title": "Wir setzen auf langlebige Bio-Baumwolle",
+        "text": "Unsere Produkte bestehen aus langlebiger Bio-Baumwolle, die durch ihre hochwertige Verarbeitung und nachhaltige Herstellung überzeugt und gleichzeitig für ein angenehmes Tragegefühl sorgt."
+      }
+    ]
+  },
+  "testimonials": {
+    "show": true,
+    "kicker": "Erfahrungsberichte",
+    "heading": "Das sagen unsere Kunden",
+    "items": [
+      {
+        "logo": "/uploads/logos/tsv-neunhof.webp",
+        "quote": "Wir sind mit den Hoodies zu unserem 100-jährigen Jubiläum top zufrieden. Es wurde auf individuelle Wünsche zwecks einem Logo Re-Design eingegangen, wir bekamen mehrere Optionen. Außerdem ging es super schnell und es wurde klar kommuniziert. Gerne wieder!",
+        "author": "Tim Schmitt, Vorstandschaft TSV Neunhof"
+      },
+      {
+        "logo": "/uploads/logos/fc-schnaittach.webp",
+        "quote": "Wir haben eine große Teambestellung aufgegeben und waren mit dem schnellen, individuellen und unkomplizierten Service sehr zufrieden. Ein Jahr später konnten wir problemlos die gleichen Produkte nachbestellen. Vielen Dank an das Team für den tollen Support und die reibungslose Abwicklung!",
+        "author": "Sebastian Gumann, 1. Vorstand FC Schnaittach"
+      },
+      {
+        "logo": "/uploads/logos/fw-ottensoos.webp",
+        "quote": "Ich bin wirklich begeistert von den Poloshirts! Die Qualität hat mich von Anfang an überzeugt, aber was mich besonders beeindruckt: Selbst nach mehreren Waschgängen sehen sie immer noch aus wie neu – absolut empfehlenswert!",
+        "author": "Ute Herbst, Vorstandschaft FW Ottensoos"
+      }
+    ]
+  },
+  "projects": {
+    "show": true,
+    "heading": "Realisierte Projekte",
+    "text": "Hier seht ihr eine kleine Auswahl unserer aktuellen Projekte die wir mit Unternehmen & Vereinen in der Region bereits umsetzen konnten! Wir können aus unserer breiten Produktpalette von T-Shirts bis Caps alles realisieren. Wir sind sehr flexibel in unseren Prozessen, da wir Grafiken & Textilveredelung bei uns direkt Inhouse verwirklichen können.",
+    "images": [
+      { "image": "/uploads/projekte/tsv-neunhof-hoodie.webp", "alt": "Hoodie TSV Neunhof" },
+      { "image": "/uploads/projekte/tcs-hoodie.webp", "alt": "Hoodie Tennisclub Schnaittach" },
+      { "image": "/uploads/projekte/kirwa-ottensoos.webp", "alt": "Kirwa-Shirts Ottensoos" },
+      { "image": "/uploads/projekte/skiclub-ottensoos.webp", "alt": "Merch Skiclub Ottensoos" },
+      { "image": "/uploads/projekte/cap-bdv.webp", "alt": "Bestickte Cap" }
+    ]
+  },
+  "pricing": {
+    "show": false,
+    "kicker": "Transparente Preise",
+    "heading": "Unsere Preise",
+    "intro": "Je mehr ihr bestellt, desto günstiger wird es. Für individuelle Wünsche erstellen wir euch gerne ein persönliches Angebot.",
+    "items": [
+      {
+        "product": "T-Shirt",
+        "description": "Bio-Baumwolle, verschiedene Farben und Größen",
+        "unit": "pro Stück",
+        "tiers": [
+          { "minQuantity": 10, "price": 19.9 },
+          { "minQuantity": 25, "price": 17.9 },
+          { "minQuantity": 50, "price": 15.9 }
+        ]
+      },
+      {
+        "product": "Hoodie",
+        "description": "Bio-Baumwolle, schwere Qualität",
+        "unit": "pro Stück",
+        "tiers": [
+          { "minQuantity": 10, "price": 44.9 },
+          { "minQuantity": 25, "price": 41.9 },
+          { "minQuantity": 50, "price": 38.9 }
+        ]
+      },
+      {
+        "product": "Cap",
+        "description": "Bestickt oder bedruckt",
+        "unit": "pro Stück",
+        "tiers": [
+          { "minQuantity": 10, "price": 22.9 },
+          { "minQuantity": 25, "price": 20.9 },
+          { "minQuantity": 50, "price": 18.9 }
+        ]
+      }
+    ],
+    "footnote": "BEISPIELPREISE – bitte vor Veröffentlichung anpassen. Alle Preise inkl. MwSt., zzgl. Versand."
+  },
+  "process": {
+    "show": true,
+    "kicker": "Von der Idee zum fertigen Produkt",
+    "heading": "So läuft euer Projekt ab",
+    "steps": [
+      {
+        "title": "Anfrage & Erstgespräch 🤝🏻",
+        "text": "Ihr teilt uns eure Anforderungen und Vorstellungen mit – wir beraten euch transparent. Unser erfahrenes Team steht euch mit über 10 Jahren Erfahrung in der Fashionbranche zur Verfügung."
+      },
+      {
+        "title": "Design & Freigabe 🎨",
+        "text": "Wir entwickeln gemeinsam die beste Lösung für euch - euer bestehendes Logo oder ein individuelles Design. Anschließend erhaltet ihr eine Vorschau und gebt die finale Freigabe, sobald alles euren Vorstellungen entspricht."
+      },
+      {
+        "title": "Individuelles Angebot 💬",
+        "text": "Da jedes Projekt unterschiedlich ist, erstellen wir für euch ein maßgeschneidertes Angebot. Dabei legen wir Wert auf transparente, faire Preise – ohne versteckte Kosten."
+      },
+      {
+        "title": "Lokale Umsetzung 🧵",
+        "text": "Nach der Freigabe erfolgt die Textilveredelung in unseren Räumlichkeiten bei Nürnberg. Wir verwenden hochwertige, nachhaltige Bio-Textilien und achten auf höchste Druckqualität."
+      },
+      {
+        "title": "Qualitätscheck & Lieferung 📦",
+        "text": "Nach sorgfältiger Qualitätsprüfung wird eure Bestellung direkt an euch versendet – natürlich termingerecht. Die Artikel sind dann direkt einsatzbereit."
+      }
+    ],
+    "ctaLabel": "Jetzt Musterdesign anfragen"
+  }
+}

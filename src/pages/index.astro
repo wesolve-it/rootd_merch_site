@@ -1,0 +1,15 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import Layout from '../layouts/Layout.astro';
+import HomeBody from '../components/HomeBody.astro';
+import { getHome } from '../lib/data';
+import { islands } from '../lib/islands';
+
+const home = (await getHome()).data?.home;
+---
+
+<Layout>
+  <TinaIsland name="home" wrapper={islands.home.wrapper} primary>
+    <HomeBody home={home} />
+  </TinaIsland>
+</Layout>

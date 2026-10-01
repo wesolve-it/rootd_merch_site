@@ -1,0 +1,17 @@
+---
+interface Props {
+  email?: string | null;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { email, class: className, ...rest } = Astro.props;
+---
+
+<a
+  href={email ? `mailto:${email}` : undefined}
+  class:list={['inline-block bg-black text-white', className]}
+  {...rest}
+>
+  <slot />
+</a>

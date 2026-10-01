@@ -1,0 +1,78 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+import { compact } from '../../lib/data';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  data: NonNullable<Home['pricing']>;
+  email?: string | null;
+}
+
+const { data, email } = Astro.props;
+
+const euro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+
+const items = compact(data.items).map((item) => {
+  const tiers = compact(item.tiers).sort((a, b) => a.minQuantity - b.minQuantity);
+  const fromPrice = item.fromPrice ?? (tiers.length ? Math.min(...tiers.map((t) => t.price)) : null);
+  return { item, tiers, fromPrice };
+});
+---
+
+<section id="preise" class="mx-auto mt-12 max-w-screen-2xl px-6">
+  <SectionHeading section={data} />
+  {data.intro && (
+    <p class="mt-4 max-w-3xl text-sm font-extralight lg:text-base" data-tina-field={tinaField(data, 'intro')}>{data.intro}</p>
+  )}
+
+  <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    {items.map(({ item, tiers, fromPrice }) => (
+      <article class="flex flex-col rounded-xl bg-gray-50 p-6 shadow-md" data-tina-field={tinaField(item)}>
+        {item.image && (
+          <img src={item.image} alt="" loading="lazy" class="mb-4 h-40 w-full rounded-lg object-cover" data-tina-field={tinaField(item, 'image')} />
+        )}
+        <h3 class="text-lg font-bold uppercase xl:text-2xl" data-tina-field={tinaField(item, 'product')}>{item.product}</h3>
+        {item.description && (
+          <p class="mt-1 text-sm font-extralight" data-tina-field={tinaField(item, 'description')}>{item.description}</p>
+        )}
+        {fromPrice != null && (
+          <p class="mt-4" data-tina-field={tinaField(item, 'fromPrice')}>
+            <span class="text-sm font-extralight">ab</span>
+            <span class="text-3xl font-bold xl:text-4xl">{euro.format(fromPrice)}</span>
+            {item.unit && <span class="text-sm font-extralight" data-tina-field={tinaField(item, 'unit')}>{item.unit}</span>}
+          </p>
+        )}
+        {tiers.length > 0 && (
+          <table class="mt-6 w-full text-sm" data-tina-field={tinaField(item, 'tiers')}>
+            <caption class="sr-only">Staffelpreise {item.product}</caption>
+            <thead>
+              <tr class="border-b border-gray-300 text-left text-xs uppercase">
+                <th scope="col" class="py-2 font-semibold">Menge</th>
+                <th scope="col" class="py-2 text-right font-semibold">Preis pro Stück</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tiers.map((tier) => (
+                <tr class="border-b border-gray-200 last:border-0">
+                  <td class="py-2 font-extralight">ab {tier.minQuantity} Stück</td>
+                  <td class="py-2 text-right font-semibold tabular-nums">{euro.format(tier.price)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </article>
+    ))}
+  </div>
+
+  {data.footnote && (
+    <p class="mt-6 text-xs font-extralight text-gray-600" data-tina-field={tinaField(data, 'footnote')}>{data.footnote}</p>
+  )}
+  {email && (
+    <p class="mt-6 text-sm">
+      Größere Mengen oder Sonderwünsche?
+      <a href={`mailto:${email}`} class="font-semibold underline">Angebot anfragen</a>
+    </p>
+  )}
+</section>

@@ -1,0 +1,16 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+
+interface Props {
+  section: { kicker?: string | null; heading?: string | null };
+}
+
+const { section } = Astro.props;
+---
+
+<div>
+  {section.kicker && (
+    <p class="text-sm font-extralight uppercase" data-tina-field={tinaField(section, 'kicker')}>{section.kicker}</p>
+  )}
+  <h2 class="text-xl font-bold uppercase xl:text-4xl" data-tina-field={tinaField(section, 'heading')}>{section.heading}</h2>
+</div>

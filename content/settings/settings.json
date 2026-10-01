@@ -1,0 +1,20 @@
+{
+  "seo": {
+    "title": "ROOTED - MERCH",
+    "description": "Individuell gestaltete Kleidung für Vereine & Unternehmen – hochwertig, langlebig und lokal bedruckt in der Region Nürnberg."
+  },
+  "logo": "/uploads/rootd-merch-logo.webp",
+  "email": "kontakt@rootd.de",
+  "footer": {
+    "company": "ROOTED MERCH",
+    "addressLines": ["Inh. Dominik Umbeer", "Heckengasse 30", "91242 Ottensoos"],
+    "linksHeading": "Allgemeines",
+    "links": [
+      { "label": "Einkaufsbedingungen", "url": "https://www.rootd.de/rootd-allgemeine-einkaufsbedingungen/" },
+      { "label": "AGB", "url": "https://www.rootd.de/allgemeine-geschaeftsbedingungen/" },
+      { "label": "Impressum", "url": "https://www.rootd.de/Impressum/" },
+      { "label": "Datenschutz", "url": "https://www.rootd.de/privacy-policy/" }
+    ],
+    "emailPrefix": "Schreib uns"
+  }
+}
