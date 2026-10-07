@@ -23,6 +23,8 @@ const year = new Date().getFullYear();
             href={`mailto:${settings.email}`}
             class="text-3xl font-extrabold tracking-tight break-all decoration-2 underline-offset-8 hover:underline sm:text-5xl xl:text-6xl"
             data-tina-field={tinaField(settings, 'email')}
+            data-umami-event="email_click"
+            data-umami-event-location="footer"
           >
             {settings.email}
           </a>
@@ -30,6 +32,8 @@ const year = new Date().getFullYear();
         <a
           href="#anfrage"
           class="inline-flex min-h-12 shrink-0 items-center gap-2 self-start rounded-sm bg-white px-6 text-sm font-bold text-black transition-colors hover:bg-gray-200 lg:self-auto"
+          data-umami-event="inquiry_cta_click"
+          data-umami-event-location="footer"
         >
           Projekt anfragen
           <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">

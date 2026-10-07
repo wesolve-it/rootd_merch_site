@@ -49,7 +49,12 @@ const heroSrcSet = data.image && process.env.NETLIFY
       </p>
       <div class="mt-7 flex flex-wrap items-center gap-3">
         {data.ctaLabel && (
-          <CtaButton href="#anfrage" data-tina-field={tinaField(data, 'ctaLabel')}>
+          <CtaButton
+            href="#anfrage"
+            data-tina-field={tinaField(data, 'ctaLabel')}
+            data-umami-event="inquiry_cta_click"
+            data-umami-event-location="hero"
+          >
             {data.ctaLabel}
           </CtaButton>
         )}

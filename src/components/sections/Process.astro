@@ -63,7 +63,13 @@ const steps = compact(data.steps);
 
     {data.ctaLabel && (
       <div class="mt-16 flex justify-center" data-reveal>
-        <CtaButton href="#anfrage" class="px-8 text-base" data-tina-field={tinaField(data, 'ctaLabel')}>
+        <CtaButton
+          href="#anfrage"
+          class="px-8 text-base"
+          data-tina-field={tinaField(data, 'ctaLabel')}
+          data-umami-event="inquiry_cta_click"
+          data-umami-event-location="process"
+        >
           {data.ctaLabel}
         </CtaButton>
       </div>

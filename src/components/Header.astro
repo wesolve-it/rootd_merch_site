@@ -53,6 +53,8 @@ const nav = [
     <a
       href="#anfrage"
       class="hidden min-h-11 shrink-0 items-center gap-2 rounded-sm bg-ink px-5 text-sm font-bold text-white transition-colors hover:bg-black sm:inline-flex"
+      data-umami-event="inquiry_cta_click"
+      data-umami-event-location="header_desktop"
     >
       Anfragen
       <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -108,12 +110,23 @@ const nav = [
       ))}
     </ul>
     <div class="mx-auto max-w-2xl px-5 pt-6 pb-8">
-      <a href="#anfrage" class="flex min-h-12 items-center justify-between rounded-sm bg-ink px-5 font-bold text-white hover:bg-black">
+      <a
+        href="#anfrage"
+        class="flex min-h-12 items-center justify-between rounded-sm bg-ink px-5 font-bold text-white hover:bg-black"
+        data-umami-event="inquiry_cta_click"
+        data-umami-event-location="header_mobile"
+      >
         Projekt anfragen
         <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </a>
       {settings?.email && (
-        <a href={`mailto:${settings.email}`} class="mt-3 flex min-h-11 items-center justify-center text-sm font-semibold text-gray-700 underline underline-offset-4" data-tina-field={tinaField(settings, 'email')}>
+        <a
+          href={`mailto:${settings.email}`}
+          class="mt-3 flex min-h-11 items-center justify-center text-sm font-semibold text-gray-700 underline underline-offset-4"
+          data-tina-field={tinaField(settings, 'email')}
+          data-umami-event="email_click"
+          data-umami-event-location="header_mobile"
+        >
           Direkt per E-Mail: {settings.email}
         </a>
       )}

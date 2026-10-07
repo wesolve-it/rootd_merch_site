@@ -4,3 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  PUBLIC_UMAMI_WEBSITE_ID = "dfcf2f59-1abd-4324-be37-c1fe063e60af"

@@ -10,6 +10,8 @@ const settings = (await getSettings()).data?.settings;
 const title = settings?.seo?.title ?? 'ROOTED - MERCH';
 const description = settings?.seo?.description ?? '';
 const ogImage = new URL(settings?.logo ?? '/favicon.png', Astro.site);
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID?.trim();
+const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL?.trim() || 'https://cloud.umami.is/script.js';
 ---
 
 <!doctype html>
@@ -30,6 +32,17 @@ const ogImage = new URL(settings?.logo ?? '/favicon.png', Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..800&display=swap" rel="stylesheet" />
+    {umamiWebsiteId && (
+      <script
+        is:inline
+        defer
+        src={umamiScriptUrl}
+        data-website-id={umamiWebsiteId}
+        data-domains="rooted-merch.de,www.rooted-merch.de"
+        data-do-not-track="true"
+        data-performance="true"
+      ></script>
+    )}
     <script is:inline>
       // Scroll-Animationen nur auf der echten Seite – nicht im Tina-Editor
       // (iframe) und nicht bei reduzierter Bewegung.

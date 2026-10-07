@@ -87,7 +87,14 @@ const fieldClass = 'mt-2 min-h-12 w-full rounded-control border border-black/20 
           Anfrage absenden
           <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </button>
-        {email && <a href={`mailto:${email}`} class="text-sm font-bold underline underline-offset-4">Lieber per E-Mail</a>}
+        {email && (
+          <a
+            href={`mailto:${email}`}
+            class="text-sm font-bold underline underline-offset-4"
+            data-umami-event="email_click"
+            data-umami-event-location="inquiry"
+          >Lieber per E-Mail</a>
+        )}
       </div>
       <p class="mt-5 hidden rounded-xl px-4 py-3 text-sm font-semibold" role="status" aria-live="polite" tabindex="-1" data-form-status></p>
       <p class="mt-4 text-xs text-gray-600"><span aria-hidden="true">*</span> Pflichtfeld</p>
@@ -119,6 +126,8 @@ const fieldClass = 'mt-2 min-h-12 w-full rounded-control border border-black/20 
         status.classList.remove('hidden');
         status.classList.add(response.ok ? 'bg-green-100' : 'bg-red-100', response.ok ? 'text-green-900' : 'text-red-900');
         if (response.ok) {
+          const analyticsWindow = window as Window & { umami?: { track: (eventName: string) => void } };
+          analyticsWindow.umami?.track('inquiry_submit_success');
           form.reset();
           if (startedAt) startedAt.value = String(Date.now());
           status.focus();
