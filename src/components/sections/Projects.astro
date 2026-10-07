@@ -16,7 +16,7 @@ const srcSet = (src: string) => process.env.NETLIFY
   : undefined;
 ---
 
-<section id="projekte" class="bg-ink px-6 py-20 text-white xl:py-28" data-theme="dark">
+<section id="projekte" class="bg-ink px-6 py-20 text-white xl:py-28" data-theme="dark" data-projects-section>
   <div class="mx-auto max-w-screen-2xl">
     <div class="max-w-3xl" data-reveal>
       <p class="mb-3 text-sm font-semibold text-white/65">Aus unserer Werkstatt</p>
@@ -58,7 +58,30 @@ const srcSet = (src: string) => process.env.NETLIFY
     </ul>
     <div class="mt-10 flex flex-col gap-4 border-t border-white/25 py-8 sm:flex-row sm:items-center sm:justify-between" data-reveal>
       <p class="max-w-xl text-lg font-bold text-balance">Interesse an einem eigenen Projekt?</p>
-      <a href="#anfrage" class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-sm bg-white px-6 text-sm font-bold text-black hover:bg-gray-200">Unverbindlich anfragen</a>
+      <a
+        href="#anfrage"
+        class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-sm bg-white px-6 text-sm font-bold text-black hover:bg-gray-200"
+        data-umami-event="inquiry_cta_click"
+        data-umami-event-location="projects"
+      >Unverbindlich anfragen</a>
     </div>
   </div>
 </section>
+
+<script>
+  const projectsSection = document.querySelector<HTMLElement>('[data-projects-section]');
+  if (projectsSection) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        const analyticsWindow = window as Window & { umami?: { track: (eventName: string) => void } };
+        const trackView = () => analyticsWindow.umami?.track('projects_view');
+        if (document.readyState === 'complete') trackView();
+        else window.addEventListener('load', trackView, { once: true });
+        observer.disconnect();
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(projectsSection);
+  }
+</script>

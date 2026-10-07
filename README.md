@@ -44,7 +44,27 @@ Das Anfrageformular versendet über [Resend](https://resend.com). Dafür müssen
 
 Ohne diese Variablen zeigt das Formular eine verständliche Fehlermeldung und verweist auf den direkten E-Mail-Kontakt.
 
+### Analytics mit Umami
+
+Umami ist zentral im Seitenlayout eingebunden. Das Tracking wird nur ausgegeben, wenn eine Website-ID gesetzt ist, und durch `data-domains` auf `rooted-merch.de` sowie `www.rooted-merch.de` beschränkt. Lokale Entwicklung und Netlify-Deploy-Previews fließen daher nicht in die Statistik ein. Zusätzlich respektiert der Tracker die Do-Not-Track-Einstellung des Browsers und erfasst die Core Web Vitals.
+
+Die Website-ID ist für das Netlify-Deployment bereits in `netlify.toml` hinterlegt. Für abweichende Umgebungen stehen diese Variablen zur Verfügung:
+
+- `PUBLIC_UMAMI_WEBSITE_ID`: ID aus dem Umami-Tracking-Code
+- `PUBLIC_UMAMI_SCRIPT_URL`: optional; nur bei Self-Hosting abweichend von `https://cloud.umami.is/script.js`
+
+Nach einer Änderung der Variablen ist ein neues Netlify-Deployment erforderlich.
+
+Erfasste Conversion-Events:
+
+- `inquiry_cta_click` mit `location`: Klick auf einen Anfrage-CTA
+- `inquiry_submit_success`: Anfrage wurde vom Server erfolgreich angenommen
+- `email_click` mit `location`: Klick auf eine Kontakt-E-Mail-Adresse
+- `projects_view`: mindestens 50 Prozent des Projektbereichs waren sichtbar
+
+Formularinhalte und andere personenbezogene Angaben werden nicht als Event-Daten übertragen.
+
 ### Einmalige Einrichtung
 
 1. **Tina Cloud** ([app.tina.io](https://app.tina.io)): Projekt anlegen, GitHub-Repo `wesolve-it/rootd_merch_site` verbinden, Branch `main`, Site-URL `https://www.rooted-merch.de` eintragen. Client-ID und einen Read-Only-Token kopieren. Kunden unter „Users“ als Editor einladen.
-2. **Netlify**: Unter *Site configuration → Environment variables* die Tina- und Formularvariablen aus `.env.example` anlegen. Build-Einstellungen kommen aus `netlify.toml`.
+2. **Netlify**: Unter *Site configuration → Environment variables* die Tina-, Formular- und Umami-Variablen aus `.env.example` anlegen. Build-Einstellungen kommen aus `netlify.toml`.

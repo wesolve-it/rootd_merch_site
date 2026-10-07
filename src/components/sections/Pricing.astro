@@ -71,7 +71,12 @@ const items = compact(data.items).map((item) => {
   )}
   <p class="mt-6 text-sm">
     Größere Mengen oder Sonderwünsche?
-    <a href="#anfrage" class="ml-1 font-semibold underline underline-offset-4">Individuelles Angebot anfragen</a>
+    <a
+      href="#anfrage"
+      class="ml-1 font-semibold underline underline-offset-4"
+      data-umami-event="inquiry_cta_click"
+      data-umami-event-location="pricing"
+    >Individuelles Angebot anfragen</a>
   </p>
   </div>
 </section>
