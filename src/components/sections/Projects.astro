@@ -8,24 +8,57 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const images = compact(data.images).filter((img) => img.image);
+const srcSet = (src: string) => process.env.NETLIFY
+  ? [360, 600, 900]
+      .map((width) => `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&q=82 ${width}w`)
+      .join(', ')
+  : undefined;
 ---
 
-<section class="mt-10 bg-black px-6 pb-10">
+<section id="projekte" class="bg-ink px-6 py-20 text-white xl:py-28" data-theme="dark">
   <div class="mx-auto max-w-screen-2xl">
-    <div class="pt-6 text-white">
-      <h2 class="mb-4 text-xl font-bold uppercase xl:text-4xl" data-tina-field={tinaField(data, 'heading')}>{data.heading}</h2>
-      <p class="font-extralight" data-tina-field={tinaField(data, 'text')}>{data.text}</p>
+    <div class="max-w-3xl" data-reveal>
+      <p class="mb-3 text-sm font-semibold text-white/65">Aus unserer Werkstatt</p>
+      <h2 class="text-3xl leading-[1.08] font-extrabold tracking-[-0.035em] text-balance sm:text-4xl xl:text-5xl" data-tina-field={tinaField(data, 'heading')}>
+        {data.heading}
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-white/80 xl:text-lg" data-tina-field={tinaField(data, 'text')}>{data.text}</p>
     </div>
-    <div class="mt-10 flex flex-row gap-4 overflow-x-auto">
-      {compact(data.images).filter((img) => img.image).map((img) => (
-        <img
-          src={img.image}
-          alt={img.alt ?? ''}
-          loading="lazy"
-          class="h-48 w-48 shrink-0 object-cover xl:h-64 xl:w-64"
+
+    <ul class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4 xl:mt-14" data-reveal>
+      {images.map((img, index) => (
+        <li
+          class:list={[
+            'group relative overflow-hidden bg-black',
+            index === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto' : 'aspect-square',
+          ]}
           data-tina-field={tinaField(img)}
-        />
+        >
+          <img
+            src={img.image}
+            srcset={srcSet(img.image!)}
+            sizes={index === 0 ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 25vw, 50vw'}
+            alt={img.alt ?? ''}
+            width="750"
+            height="750"
+            loading="lazy"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          {(img.customer || img.product || img.finish) && (
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-4 pt-16 pb-4 md:px-5 md:pb-5" aria-hidden="true">
+              {img.customer && <p class="text-sm font-extrabold sm:text-base">{img.customer}</p>}
+              <p class="mt-1 text-xs text-white/75">
+                {[img.product, img.finish].filter(Boolean).join(' · ')}
+              </p>
+            </div>
+          )}
+        </li>
       ))}
+    </ul>
+    <div class="mt-10 flex flex-col gap-4 border-t border-white/25 py-8 sm:flex-row sm:items-center sm:justify-between" data-reveal>
+      <p class="max-w-xl text-lg font-bold text-balance">Interesse an einem eigenen Projekt?</p>
+      <a href="#anfrage" class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-sm bg-white px-6 text-sm font-bold text-black hover:bg-gray-200">Unverbindlich anfragen</a>
     </div>
   </div>
 </section>

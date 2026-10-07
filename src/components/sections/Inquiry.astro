@@ -1,0 +1,135 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+
+interface Props {
+  data: NonNullable<Home['inquiry']>;
+  email?: string | null;
+}
+
+const { data, email } = Astro.props;
+const fieldClass = 'mt-2 min-h-12 w-full rounded-control border border-black/20 bg-white px-4 py-3 text-base text-ink shadow-sm outline-none placeholder:text-gray-500 focus:border-accent';
+---
+
+<section id="anfrage" class="bg-soft px-6 py-20 xl:py-28">
+  <div class="mx-auto grid max-w-screen-xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+    <div data-reveal>
+      {data.kicker && <p class="mb-3 text-sm font-semibold text-gray-600" data-tina-field={tinaField(data, 'kicker')}>{data.kicker}</p>}
+      <h2 class="text-3xl leading-[1.05] font-extrabold tracking-[-0.04em] text-balance sm:text-4xl xl:text-5xl" data-tina-field={tinaField(data, 'heading')}>{data.heading}</h2>
+      {data.intro && <p class="mt-5 max-w-md leading-relaxed text-gray-800" data-tina-field={tinaField(data, 'intro')}>{data.intro}</p>}
+      <ul class="mt-8 space-y-3 text-sm font-semibold text-gray-800" aria-label="Vorteile einer Anfrage">
+        {[
+          'Persönliche Rückmeldung statt automatischer Angebote',
+          'Gestaltung und Textilveredelung aus einer Hand',
+          'Transparente, unverbindliche Ersteinschätzung',
+        ].map((benefit) => (
+          <li class="flex items-center gap-3 border-t border-black/15 pt-3">
+            <svg class="size-5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            {benefit}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <form action="/api/anfrage" method="post" class="border border-black/15 bg-paper p-6 sm:p-8" data-inquiry-form data-reveal>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <label class="block font-bold">
+          Organisation oder Verein <span aria-hidden="true">*</span>
+          <input name="organisation" autocomplete="organization" required maxlength="120" class={fieldClass} />
+        </label>
+        <label class="block font-bold">
+          Ansprechpartner:in <span aria-hidden="true">*</span>
+          <input name="name" autocomplete="name" required maxlength="120" class={fieldClass} />
+        </label>
+        <label class="block font-bold">
+          E-Mail <span aria-hidden="true">*</span>
+          <input name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200" class={fieldClass} />
+        </label>
+        <label class="block font-bold">
+          Was möchtet ihr umsetzen? <span aria-hidden="true">*</span>
+          <select name="product" required class={fieldClass}>
+            <option value="">Bitte auswählen</option>
+            <option>T-Shirts</option>
+            <option>Hoodies & Sweatshirts</option>
+            <option>Caps & Accessoires</option>
+            <option>Verschiedene Produkte</option>
+            <option>Noch offen</option>
+          </select>
+        </label>
+        <label class="block font-bold">
+          Ungefähre Stückzahl
+          <input name="quantity" type="number" inputmode="numeric" min="1" max="100000" class={fieldClass} placeholder="z. B. 50" />
+        </label>
+        <label class="block font-bold">
+          Gewünschter Termin
+          <input name="deadline" type="date" class={fieldClass} />
+        </label>
+      </div>
+      <label class="mt-5 block font-bold">
+        Worum geht es bei eurem Projekt?
+        <textarea name="message" rows="5" maxlength="2000" class={fieldClass} placeholder="Anlass, Vorstellungen, vorhandenes Logo …"></textarea>
+      </label>
+      <div class="sr-only" aria-hidden="true">
+        <label>Website <input name="website" tabindex="-1" autocomplete="off" /></label>
+      </div>
+      <input type="hidden" name="startedAt" value="" data-started-at />
+      <label class="mt-5 flex items-start gap-3 text-sm leading-relaxed text-gray-700">
+        <input name="privacy" type="checkbox" value="accepted" required class="mt-1 size-5 shrink-0 accent-black" />
+        <span>
+          Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.
+          {data.privacyUrl
+            ? <a href={data.privacyUrl} class="font-bold underline decoration-2 underline-offset-2">Datenschutzhinweise</a>
+            : <span class="font-bold">Datenschutzhinweise</span>}
+        </span>
+      </label>
+      <div class="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+        <button type="submit" class="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-black px-7 font-bold text-white hover:bg-gray-800 disabled:cursor-wait disabled:opacity-60" data-submit>
+          Anfrage absenden
+          <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        {email && <a href={`mailto:${email}`} class="text-sm font-bold underline underline-offset-4">Lieber per E-Mail</a>}
+      </div>
+      <p class="mt-5 hidden rounded-xl px-4 py-3 text-sm font-semibold" role="status" aria-live="polite" tabindex="-1" data-form-status></p>
+      <p class="mt-4 text-xs text-gray-600"><span aria-hidden="true">*</span> Pflichtfeld</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-inquiry-form]').forEach((form) => {
+    const startedAt = form.querySelector<HTMLInputElement>('[data-started-at]');
+    if (startedAt) startedAt.value = String(Date.now());
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('[data-submit]');
+      const status = form.querySelector<HTMLElement>('[data-form-status]');
+      if (!button || !status) return;
+      button.disabled = true;
+      status.className = 'mt-5 hidden rounded-xl px-4 py-3 text-sm font-semibold';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const result = await response.json();
+        status.textContent = result.message ?? 'Die Anfrage konnte nicht gesendet werden.';
+        status.classList.remove('hidden');
+        status.classList.add(response.ok ? 'bg-green-100' : 'bg-red-100', response.ok ? 'text-green-900' : 'text-red-900');
+        if (response.ok) {
+          form.reset();
+          if (startedAt) startedAt.value = String(Date.now());
+          status.focus();
+        }
+      } catch {
+        status.textContent = 'Die Verbindung ist fehlgeschlagen. Bitte versucht es erneut oder schreibt uns direkt per E-Mail.';
+        status.classList.remove('hidden');
+        status.classList.add('bg-red-100', 'text-red-900');
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>

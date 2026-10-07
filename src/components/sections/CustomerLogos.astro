@@ -18,23 +18,27 @@ const sizes: Record<string, string> = {
 };
 ---
 
-<section>
-  <div class="mx-auto mt-12 mb-8 max-w-screen-2xl px-6">
+<section class="border-b border-black/8 bg-paper py-16 sm:py-20">
+  <div class="mx-auto mb-8 max-w-screen-2xl px-6">
     <SectionHeading section={data} />
   </div>
-
-  <div class="group h-32 w-full overflow-hidden mask-x-from-90% mask-x-to-100%">
-    <!-- Die Liste wird doppelt gerendert, damit die Endlos-Animation nahtlos ist -->
-    <div class="flex h-full w-max animate-logo-scroll items-center group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+  <div class="group overflow-hidden border-y border-black/10 bg-white py-4 focus:outline-none" role="region" aria-label="Durchlaufende Auswahl unserer Kundenlogos. Die Animation pausiert bei Fokus oder wenn der Mauszeiger darüber liegt." tabindex="0">
+    <div class="flex w-max animate-logo-scroll items-center group-hover:[animation-play-state:paused] group-focus:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none">
       {[false, true].map((duplicate) => (
-        <ul class="flex items-center" aria-hidden={duplicate ? 'true' : undefined}>
+        <ul
+          class:list={[
+            'flex items-center motion-reduce:grid motion-reduce:w-full motion-reduce:grid-cols-2 motion-reduce:gap-6 sm:motion-reduce:grid-cols-3 lg:motion-reduce:grid-cols-5',
+            duplicate && 'motion-reduce:hidden',
+          ]}
+          aria-hidden={duplicate ? 'true' : undefined}
+        >
           {logos.map((logo) => (
-            <li class="shrink-0 px-12 xl:px-16" data-tina-field={duplicate ? undefined : tinaField(logo)}>
+            <li class="grid min-h-28 w-52 shrink-0 place-items-center px-8 motion-reduce:w-auto" data-tina-field={duplicate ? undefined : tinaField(logo)}>
               <img
                 src={logo.image}
                 alt={duplicate ? '' : logo.name}
                 loading="lazy"
-                class:list={['w-auto', sizes[logo.size ?? 'md'] ?? sizes.md]}
+                class:list={['max-w-full object-contain grayscale', sizes[logo.size ?? 'md'] ?? sizes.md]}
               />
             </li>
           ))}

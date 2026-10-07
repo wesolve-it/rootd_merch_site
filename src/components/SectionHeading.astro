@@ -8,9 +8,9 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<div>
+<div data-reveal>
   {section.kicker && (
-    <p class="text-sm font-extralight uppercase" data-tina-field={tinaField(section, 'kicker')}>{section.kicker}</p>
+    <p class="mb-3 text-sm font-semibold text-gray-600" data-tina-field={tinaField(section, 'kicker')}>{section.kicker}</p>
   )}
-  <h2 class="text-xl font-bold uppercase xl:text-4xl" data-tina-field={tinaField(section, 'heading')}>{section.heading}</h2>
+  <h2 class="max-w-3xl text-3xl leading-[1.08] font-extrabold tracking-[-0.035em] text-balance sm:text-4xl xl:text-5xl" data-tina-field={tinaField(section, 'heading')}>{section.heading}</h2>
 </div>
