@@ -1,0 +1,32 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { Home } from '../../lib/data';
+import { compact } from '../../lib/data';
+import SectionHeading from '../SectionHeading.astro';
+
+interface Props {
+  data: NonNullable<Home['faq']>;
+}
+
+const { data } = Astro.props;
+---
+
+<section id="faq" class="border-y border-black/8 bg-paper py-20 xl:py-28">
+  <div class="mx-auto grid max-w-screen-2xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+    <div>
+      <SectionHeading section={data} />
+      <p class="mt-5 max-w-md text-sm leading-relaxed text-gray-700">Weitere Fragen beantworten wir gerne persönlich.</p>
+    </div>
+    <div class="divide-y divide-black/10 border-y border-black/10">
+      {compact(data.items).map((item, index) => (
+        <details class="group py-1" data-tina-field={tinaField(item)} data-reveal style={`--reveal-index: ${index}`}>
+          <summary class="flex min-h-16 cursor-pointer list-none items-center justify-between gap-5 py-4 text-left font-extrabold marker:hidden">
+            <span data-tina-field={tinaField(item, 'question')}>{item.question}</span>
+            <span class="grid size-8 shrink-0 place-items-center text-black transition-transform group-open:rotate-45 motion-reduce:transition-none" aria-hidden="true">+</span>
+          </summary>
+          <p class="max-w-2xl pb-6 pr-10 text-sm leading-relaxed text-gray-700 sm:text-base" data-tina-field={tinaField(item, 'answer')}>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -9,22 +9,53 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+// „Name, Funktion Verein“ → Name fett, Rest darunter
+const splitAuthor = (author?: string | null) => {
+  const [name, ...rest] = (author ?? '').split(',');
+  return { name: name.trim(), role: rest.join(',').trim() };
+};
 ---
 
-<section class="mx-auto w-full max-w-screen-2xl px-6 py-12">
-  <div class="my-6">
+<section id="stimmen" class="mx-auto w-full max-w-screen-2xl px-6 py-20 xl:py-28">
+  <div class="mb-12">
     <SectionHeading section={data} />
   </div>
 
-  <div class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4">
-    {compact(data.items).map((item) => (
-      <figure class="w-5/6 shrink-0 snap-start rounded-xl bg-gray-50 p-6 shadow-md xl:w-1/3" data-tina-field={tinaField(item)}>
-        {item.logo && (
-          <img src={item.logo} alt="" loading="lazy" class="mb-4 h-12 w-auto" data-tina-field={tinaField(item, 'logo')} />
-        )}
-        <blockquote class="mb-4 text-sm text-gray-700" data-tina-field={tinaField(item, 'quote')}>{item.quote}</blockquote>
-        <figcaption class="text-sm font-semibold" data-tina-field={tinaField(item, 'author')}>{item.author}</figcaption>
-      </figure>
-    ))}
+  <div class="grid gap-5 lg:grid-cols-3">
+    {compact(data.items).map((item, index) => {
+      const { name, role } = splitAuthor(item.author);
+      return (
+        <figure
+          class="flex flex-col border-t-2 border-black bg-white"
+          style={`--reveal-index: ${index}`}
+          data-reveal
+          data-tina-field={tinaField(item)}
+        >
+          {item.image && (
+            <img src={item.image} alt="" loading="lazy" class="aspect-[16/9] w-full object-cover" data-tina-field={tinaField(item, 'image')} />
+          )}
+          <div class="flex flex-1 flex-col p-7 xl:p-9">
+            <svg class="mb-5 h-7 w-auto self-start text-black" viewBox="0 0 40 30" fill="currentColor" aria-hidden="true">
+              <path d="M0 30V17.4Q0 9.6 3.6 5.2 7.3.8 14.5 0l1.3 4.7q-4.4 1-6.3 3.6-1.9 2.5-1.9 6.2h7V30H0Zm22.8 0V17.4q0-7.8 3.6-12.2Q30.1.8 37.3 0l1.3 4.7q-4.4 1-6.3 3.6-1.9 2.5-1.9 6.2h7V30H22.8Z" />
+            </svg>
+            <blockquote class="mb-8 text-base leading-relaxed text-gray-800" data-tina-field={tinaField(item, 'quote')}>
+              {item.quote}
+            </blockquote>
+            <figcaption class="mt-auto flex items-center gap-4" data-tina-field={tinaField(item, 'author')}>
+            {item.logo && (
+              <span class="grid size-14 shrink-0 place-items-center bg-soft p-2">
+                <img src={item.logo} alt="" loading="lazy" class="max-h-full w-auto" data-tina-field={tinaField(item, 'logo')} />
+              </span>
+            )}
+            <span class="text-sm leading-snug">
+              <span class="block font-bold">{name}</span>
+              {role && <span class="block text-gray-600">{role}</span>}
+            </span>
+            </figcaption>
+          </div>
+        </figure>
+      );
+    })}
   </div>
 </section>

@@ -1,8 +1,10 @@
 {
   "hero": {
-    "heading": "Individuell gestaltete Kleidung für Vereine & Unternehmen",
-    "subheading": "Hochwertig, langlebig und lokal bedruckt – direkt aus der Region Nürnberg",
-    "ctaLabel": "Jetzt Musterdesign anfragen",
+    "heading": "Individuelle Textilien für Teams und Unternehmen",
+    "subheading": "Gestaltung, Textildruck und Stick aus der Region Nürnberg. Persönlich betreut und direkt bei uns umgesetzt.",
+    "trustLabel": "Gestaltung · Textildruck · Stick",
+    "ctaLabel": "Projekt anfragen",
+    "secondaryCtaLabel": "Projekte ansehen",
     "image": "/uploads/hero.webp"
   },
   "customers": {
@@ -68,17 +70,17 @@
   "projects": {
     "show": true,
     "heading": "Realisierte Projekte",
-    "text": "Hier seht ihr eine kleine Auswahl unserer aktuellen Projekte die wir mit Unternehmen & Vereinen in der Region bereits umsetzen konnten! Wir können aus unserer breiten Produktpalette von T-Shirts bis Caps alles realisieren. Wir sind sehr flexibel in unseren Prozessen, da wir Grafiken & Textilveredelung bei uns direkt Inhouse verwirklichen können.",
+    "text": "Von Jubiläums-Hoodies bis zu bestickten Caps: Wir gestalten und veredeln jedes Projekt direkt bei uns in der Region.",
     "images": [
-      { "image": "/uploads/projekte/tsv-neunhof-hoodie.webp", "alt": "Hoodie TSV Neunhof" },
-      { "image": "/uploads/projekte/tcs-hoodie.webp", "alt": "Hoodie Tennisclub Schnaittach" },
-      { "image": "/uploads/projekte/kirwa-ottensoos.webp", "alt": "Kirwa-Shirts Ottensoos" },
-      { "image": "/uploads/projekte/skiclub-ottensoos.webp", "alt": "Merch Skiclub Ottensoos" },
-      { "image": "/uploads/projekte/cap-bdv.webp", "alt": "Bestickte Cap" }
+      { "image": "/uploads/projekte/tsv-neunhof-hoodie.webp", "alt": "Dunkelblauer Jubiläums-Hoodie des TSV Neunhof", "customer": "TSV Neunhof", "product": "Jubiläums-Hoodie", "finish": "Textildruck" },
+      { "image": "/uploads/projekte/tcs-hoodie.webp", "alt": "Grauer Hoodie mit Logo des Tennisclubs Schnaittach", "customer": "Tennisclub Schnaittach", "product": "Team-Hoodie", "finish": "Textildruck" },
+      { "image": "/uploads/projekte/kirwa-ottensoos.webp", "alt": "Schwarzer Kirwa-Hoodie mit Rückenmotiv", "customer": "Kirwa Ottensoos", "product": "Event-Hoodie", "finish": "Rückendruck" },
+      { "image": "/uploads/projekte/skiclub-ottensoos.webp", "alt": "Rosa T-Shirt mit Logo des Skiclubs Ottensoos", "customer": "Skiclub Ottensoos", "product": "Vereins-Shirt", "finish": "Textildruck" },
+      { "image": "/uploads/projekte/cap-bdv.webp", "alt": "Mehrere graue Caps mit gesticktem Vereinslogo", "customer": "BDV", "product": "Team-Cap", "finish": "Stick" }
     ]
   },
   "pricing": {
-    "show": false,
+    "show": true,
     "kicker": "Transparente Preise",
     "heading": "Unsere Preise",
     "intro": "Je mehr ihr bestellt, desto günstiger wird es. Für individuelle Wünsche erstellen wir euch gerne ein persönliches Angebot.",
@@ -114,7 +116,7 @@
         ]
       }
     ],
-    "footnote": "BEISPIELPREISE – bitte vor Veröffentlichung anpassen. Alle Preise inkl. MwSt., zzgl. Versand."
+    "footnote": "Beispielpreise zur Orientierung. Der finale Preis richtet sich nach Textil, Veredelung, Motiv und Stückzahl. Alle Preise inkl. MwSt., zzgl. Versand."
   },
   "process": {
     "show": true,
@@ -122,26 +124,44 @@
     "heading": "So läuft euer Projekt ab",
     "steps": [
       {
-        "title": "Anfrage & Erstgespräch 🤝🏻",
-        "text": "Ihr teilt uns eure Anforderungen und Vorstellungen mit – wir beraten euch transparent. Unser erfahrenes Team steht euch mit über 10 Jahren Erfahrung in der Fashionbranche zur Verfügung."
+        "title": "Anfrage & Erstgespräch",
+        "text": "Ihr erzählt uns von eurem Anlass, der gewünschten Menge und euren Ideen. Wir beraten euch persönlich und transparent."
       },
       {
-        "title": "Design & Freigabe 🎨",
-        "text": "Wir entwickeln gemeinsam die beste Lösung für euch - euer bestehendes Logo oder ein individuelles Design. Anschließend erhaltet ihr eine Vorschau und gebt die finale Freigabe, sobald alles euren Vorstellungen entspricht."
+        "title": "Design & Freigabe",
+        "text": "Wir entwickeln das passende Motiv und zeigen euch eine realistische Vorschau. Produziert wird erst nach eurer Freigabe."
       },
       {
-        "title": "Individuelles Angebot 💬",
-        "text": "Da jedes Projekt unterschiedlich ist, erstellen wir für euch ein maßgeschneidertes Angebot. Dabei legen wir Wert auf transparente, faire Preise – ohne versteckte Kosten."
+        "title": "Transparentes Angebot",
+        "text": "Ihr erhaltet ein nachvollziehbares Angebot, abgestimmt auf Produkt, Veredelung und Stückzahl – ohne versteckte Kosten."
       },
       {
-        "title": "Lokale Umsetzung 🧵",
-        "text": "Nach der Freigabe erfolgt die Textilveredelung in unseren Räumlichkeiten bei Nürnberg. Wir verwenden hochwertige, nachhaltige Bio-Textilien und achten auf höchste Druckqualität."
+        "title": "Lokale Umsetzung",
+        "text": "Nach der Freigabe veredeln wir eure Textilien direkt bei Nürnberg und achten auf saubere Verarbeitung und langlebige Qualität."
       },
       {
-        "title": "Qualitätscheck & Lieferung 📦",
-        "text": "Nach sorgfältiger Qualitätsprüfung wird eure Bestellung direkt an euch versendet – natürlich termingerecht. Die Artikel sind dann direkt einsatzbereit."
+        "title": "Qualitätscheck & Lieferung",
+        "text": "Wir prüfen jedes Projekt sorgfältig und liefern eure Bestellung termingerecht und direkt einsatzbereit aus."
       }
     ],
-    "ctaLabel": "Jetzt Musterdesign anfragen"
+    "ctaLabel": "Projekt anfragen"
+  },
+  "faq": {
+    "show": true,
+    "kicker": "Gut zu wissen",
+    "heading": "Häufige Fragen",
+    "items": [
+      { "question": "Gibt es eine Mindestbestellmenge?", "answer": "Die sinnvolle Mindestmenge hängt von Produkt und Veredelung ab. Nennt uns eure Wunschmenge – wir zeigen euch die wirtschaftlich passende Lösung." },
+      { "question": "Wie lange dauert ein Projekt?", "answer": "Nach Designfreigabe benötigen wir in der Regel wenige Wochen. Bei festen Veranstaltungsterminen prüfen wir die Machbarkeit direkt bei der Anfrage." },
+      { "question": "Können wir später nachbestellen?", "answer": "Ja. Freigegebene Designs und Produktspezifikationen können für unkomplizierte Nachbestellungen wiederverwendet werden." },
+      { "question": "Unterstützt ihr uns beim Design?", "answer": "Ja. Vom bestehenden Vereinslogo bis zum neuen Motiv entwickeln wir gemeinsam eine Gestaltung, die zu euch und dem gewählten Textil passt." }
+    ]
+  },
+  "inquiry": {
+    "show": true,
+    "kicker": "Unverbindlich anfragen",
+    "heading": "Projekt anfragen",
+    "intro": "Schickt uns die wichtigsten Eckdaten. Wir melden uns persönlich mit einer ersten Einschätzung.",
+    "privacyUrl": "https://www.rootd.de/privacy-policy/"
   }
 }

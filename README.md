@@ -34,9 +34,17 @@ Jeder Bereich hat einen Schalter „Bereich anzeigen“. Der Preisbereich ist so
 - `npm run build` – Produktions-Build gegen Tina Cloud (benötigt `PUBLIC_TINA_CLIENT_ID` und `TINA_TOKEN`, siehe `.env.example`)
 - `npm run build:local` – Build ohne Tina Cloud, z. B. zum Testen
 
-Hosting: Netlify (`netlify.toml`). Alle Seiten sind statisch, nur `/tina-island/*` (Live-Vorschau im Editor) läuft als Netlify Function. Speichert der Kunde im Editor, committet Tina Cloud auf `main` und Netlify deployt automatisch.
+Hosting: Netlify (`netlify.toml`). Die Inhaltsseiten sind statisch; `/tina-island/*` (Live-Vorschau im Editor) und `/api/anfrage` laufen als Netlify Functions. Speichert der Kunde im Editor, committet Tina Cloud auf `main` und Netlify deployt automatisch.
+
+Das Anfrageformular versendet über [Resend](https://resend.com). Dafür müssen die Absenderdomain verifiziert und diese Variablen gesetzt sein:
+
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL` (z. B. `ROOTED MERCH <anfrage@rooted-merch.de>`)
+- `CONTACT_TO_EMAIL`
+
+Ohne diese Variablen zeigt das Formular eine verständliche Fehlermeldung und verweist auf den direkten E-Mail-Kontakt.
 
 ### Einmalige Einrichtung
 
 1. **Tina Cloud** ([app.tina.io](https://app.tina.io)): Projekt anlegen, GitHub-Repo `wesolve-it/rootd_merch_site` verbinden, Branch `main`, Site-URL `https://www.rooted-merch.de` eintragen. Client-ID und einen Read-Only-Token kopieren. Kunden unter „Users“ als Editor einladen.
-2. **Netlify**: Unter *Site configuration → Environment variables* `PUBLIC_TINA_CLIENT_ID` und `TINA_TOKEN` anlegen. Build-Einstellungen kommen aus `netlify.toml`.
+2. **Netlify**: Unter *Site configuration → Environment variables* die Tina- und Formularvariablen aus `.env.example` anlegen. Build-Einstellungen kommen aus `netlify.toml`.

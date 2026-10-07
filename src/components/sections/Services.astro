@@ -11,19 +11,17 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<section class="mx-auto mt-12 max-w-screen-2xl">
-  <div class="px-6">
+<section id="leistungen" class="bg-soft py-20 xl:py-28">
+  <div class="mx-auto max-w-screen-2xl px-6">
     <SectionHeading section={data} />
-  </div>
-  <div class="flex flex-col lg:flex-row">
-    {compact(data.items).map((item) => (
-      <div class="mt-12 flex-1 px-8" data-tina-field={tinaField(item)}>
-        {item.icon && (
-          <img src={item.icon} alt="" loading="lazy" class="mx-auto mb-6 h-20 w-auto xl:mb-7" data-tina-field={tinaField(item, 'icon')} />
-        )}
-        <h3 class="mb-4 text-center text-xl font-bold xl:text-3xl" data-tina-field={tinaField(item, 'title')}>{item.title}</h3>
-        <p class="text-center text-sm font-extralight lg:text-base" data-tina-field={tinaField(item, 'text')}>{item.text}</p>
-      </div>
+  <ol class="mt-12 border-t border-black/20">
+    {compact(data.items).map((item, index) => (
+      <li class="grid gap-5 border-b border-black/20 py-8 sm:grid-cols-[4rem_1fr] sm:items-center sm:gap-8 lg:grid-cols-[6rem_0.8fr_1.2fr] lg:py-10" style={`--reveal-index: ${index}`} data-reveal data-tina-field={tinaField(item)}>
+        <p class="text-sm font-bold tabular-nums text-gray-500">0{index + 1}</p>
+        <h3 class="text-xl leading-tight font-extrabold tracking-tight text-balance xl:text-2xl" data-tina-field={tinaField(item, 'title')}>{item.title}</h3>
+        <p class="text-sm leading-relaxed text-gray-700 sm:col-start-2 lg:col-start-3 lg:row-start-1 lg:text-base" data-tina-field={tinaField(item, 'text')}>{item.text}</p>
+      </li>
     ))}
+  </ol>
   </div>
 </section>

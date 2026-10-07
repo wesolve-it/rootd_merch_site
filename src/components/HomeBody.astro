@@ -8,6 +8,8 @@ import Testimonials from './sections/Testimonials.astro';
 import Projects from './sections/Projects.astro';
 import Pricing from './sections/Pricing.astro';
 import Process from './sections/Process.astro';
+import Faq from './sections/Faq.astro';
+import Inquiry from './sections/Inquiry.astro';
 
 interface Props {
   home?: Home | null;
@@ -19,13 +21,15 @@ const email = (await getSettings()).data?.settings?.email;
 ---
 
 {home && (
-  <>
-    {home.hero && <Hero data={home.hero} email={email} />}
+  <div id="main-content" tabindex="-1">
+    {home.hero && <Hero data={home.hero} />}
     {home.customers?.show && <CustomerLogos data={home.customers} />}
     {home.services?.show && <Services data={home.services} />}
     {home.testimonials?.show && <Testimonials data={home.testimonials} />}
     {home.projects?.show && <Projects data={home.projects} />}
-    {home.pricing?.show && <Pricing data={home.pricing} email={email} />}
-    {home.process?.show && <Process data={home.process} email={email} />}
-  </>
+    {home.pricing?.show && <Pricing data={home.pricing} />}
+    {home.process?.show && <Process data={home.process} />}
+    {home.faq?.show && <Faq data={home.faq} />}
+    {home.inquiry?.show && <Inquiry data={home.inquiry} email={email} />}
+  </div>
 )}

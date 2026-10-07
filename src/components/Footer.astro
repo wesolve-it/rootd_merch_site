@@ -10,26 +10,68 @@ interface Props {
 const { settings } = Astro.props;
 const footer = settings?.footer;
 const links = compact(footer?.links);
+const year = new Date().getFullYear();
 ---
 
-<div class="bg-black text-white">
-  <div class="mx-auto flex max-w-screen-2xl flex-col justify-between px-6 lg:flex-row xl:justify-start xl:gap-16">
-    <div class="mt-6 mb-10">
-      <h3 class="mb-4 font-bold" data-tina-field={footer && tinaField(footer, 'company')}>{footer?.company}</h3>
-      <div data-tina-field={footer && tinaField(footer, 'addressLines')}>
-        {compact(footer?.addressLines).map((line) => <p>{line}</p>)}
+<div class="bg-ink text-white" data-theme="dark">
+  <div class="mx-auto max-w-screen-2xl px-6">
+    {settings?.email && (
+      <div class="flex flex-col gap-6 border-b border-white/15 py-14 lg:flex-row lg:items-end lg:justify-between xl:py-20">
+        <div>
+          <p class="mb-3 text-gray-400" data-tina-field={footer && tinaField(footer, 'emailPrefix')}>{footer?.emailPrefix}</p>
+          <a
+            href={`mailto:${settings.email}`}
+            class="text-3xl font-extrabold tracking-tight break-all decoration-2 underline-offset-8 hover:underline sm:text-5xl xl:text-6xl"
+            data-tina-field={tinaField(settings, 'email')}
+          >
+            {settings.email}
+          </a>
+        </div>
+        <a
+          href="#anfrage"
+          class="inline-flex min-h-12 shrink-0 items-center gap-2 self-start rounded-sm bg-white px-6 text-sm font-bold text-black transition-colors hover:bg-gray-200 lg:self-auto"
+        >
+          Projekt anfragen
+          <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    )}
+
+    <div class="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+      <div>
+        {settings?.logo && (
+          <img src={settings.logo} alt="" width="480" height="202" loading="lazy" class="mb-5 h-auto w-28 invert" />
+        )}
+        {settings?.seo?.description && (
+          <p class="max-w-xs text-sm leading-relaxed text-gray-400" data-tina-field={tinaField(settings.seo, 'description')}>
+            {settings.seo.description}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold" data-tina-field={footer && tinaField(footer, 'company')}>{footer?.company}</h3>
+        <address class="text-sm leading-relaxed text-gray-400 not-italic" data-tina-field={footer && tinaField(footer, 'addressLines')}>
+          {compact(footer?.addressLines).map((line) => <p>{line}</p>)}
+        </address>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold" data-tina-field={footer && tinaField(footer, 'linksHeading')}>{footer?.linksHeading}</h3>
+        <ul class="space-y-2 text-sm">
+          {links.map((link) => (
+            <li>
+              <a href={link.url} class="text-gray-400 transition-colors hover:text-white" data-tina-field={tinaField(link)}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
-    <div class="mt-10 mb-20 flex flex-col gap-4 xl:mt-6 xl:gap-2">
-      <h3 class="mb-4 font-bold" data-tina-field={footer && tinaField(footer, 'linksHeading')}>{footer?.linksHeading}</h3>
-      {links.map((link) => (
-        <a href={link.url} data-tina-field={tinaField(link)}>{link.label}</a>
-      ))}
-      {settings?.email && (
-        <a href={`mailto:${settings.email}`} data-tina-field={tinaField(settings, 'email')}>
-          {footer?.emailPrefix} <span class="font-semibold underline">{settings.email}</span>
-        </a>
-      )}
+
+    <div class="border-t border-white/15 py-6 text-xs text-gray-500">
+      © {year} {footer?.company}
     </div>
   </div>
 </div>
