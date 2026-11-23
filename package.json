@@ -16,6 +16,7 @@
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",
     "@astrojs/node": "^10.1.4",
+    "@fontsource-variable/archivo": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tinacms/astro": "^0.7.1",
     "astro": "^6.4.8",

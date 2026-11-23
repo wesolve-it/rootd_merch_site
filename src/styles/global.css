@@ -1,14 +1,12 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
 
   --color-ink: #171512;
   --color-soft: #f1f2f2;
   --color-paper: #ffffff;
-  --color-accent: #171512;
-  --color-accent-dark: #000000;
-  --color-accent-soft: #e6e8e8;
+  --color-night: #0e1524;
   --color-focus: #1769aa;
 
   --radius-card: 0.375rem;
@@ -46,6 +44,24 @@
   }
 
   body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  p,
+  li,
+  blockquote,
+  figcaption {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  [data-theme='dark'] ::selection,
+  footer ::selection {
     background: var(--color-paper);
     color: var(--color-ink);
   }
@@ -103,13 +119,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Bewegung (Zoom, Einschweben, Laufband) aus – Farb- und Deckkraft-
+     Übergänge bleiben als Rückmeldung erhalten. */
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
   }
 
   html {

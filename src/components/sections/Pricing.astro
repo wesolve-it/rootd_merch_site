@@ -2,6 +2,7 @@
 import { tinaField } from '@tinacms/astro/tina-field';
 import type { Home } from '../../lib/data';
 import { compact } from '../../lib/data';
+import { netlifySrcSet } from '../../lib/images';
 import SectionHeading from '../SectionHeading.astro';
 
 interface Props {
@@ -30,7 +31,7 @@ const items = compact(data.items).map((item) => {
     {items.map(({ item, tiers, fromPrice }) => (
       <article class="flex flex-col border-b border-black/20 p-6 md:border-r md:nth-[2n]:border-r-0 xl:nth-[2n]:border-r xl:nth-[3n]:border-r-0 xl:p-8" data-tina-field={tinaField(item)}>
         {item.image && (
-          <img src={item.image} alt="" loading="lazy" class="mb-5 aspect-[4/3] w-full object-cover" data-tina-field={tinaField(item, 'image')} />
+          <img src={item.image} srcset={netlifySrcSet(item.image, [400, 700, 1000])} sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw" alt="" width="1200" height="900" loading="lazy" class="mb-5 aspect-[4/3] w-full object-cover" data-tina-field={tinaField(item, 'image')} />
         )}
         <h3 class="text-xl font-extrabold xl:text-2xl" data-tina-field={tinaField(item, 'product')}>{item.product}</h3>
         {item.description && (

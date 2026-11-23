@@ -2,6 +2,7 @@
 import { tinaField } from '@tinacms/astro/tina-field';
 import type { Home } from '../../lib/data';
 import { compact } from '../../lib/data';
+import { netlifySrcSet } from '../../lib/images';
 import SectionHeading from '../SectionHeading.astro';
 
 interface Props {
@@ -33,7 +34,7 @@ const splitAuthor = (author?: string | null) => {
           data-tina-field={tinaField(item)}
         >
           {item.image && (
-            <img src={item.image} alt="" loading="lazy" class="aspect-[16/9] w-full object-cover" data-tina-field={tinaField(item, 'image')} />
+            <img src={item.image} srcset={netlifySrcSet(item.image, [480, 800, 1200])} sizes="(min-width: 1024px) 33vw, 100vw" alt="" width="1600" height="900" loading="lazy" class="aspect-[16/9] w-full object-cover" data-tina-field={tinaField(item, 'image')} />
           )}
           <div class="flex flex-1 flex-col p-7 xl:p-9">
             <svg class="mb-5 h-7 w-auto self-start text-black" viewBox="0 0 40 30" fill="currentColor" aria-hidden="true">
@@ -45,7 +46,7 @@ const splitAuthor = (author?: string | null) => {
             <figcaption class="mt-auto flex items-center gap-4" data-tina-field={tinaField(item, 'author')}>
             {item.logo && (
               <span class="grid size-14 shrink-0 place-items-center bg-soft p-2">
-                <img src={item.logo} alt="" loading="lazy" class="max-h-full w-auto" data-tina-field={tinaField(item, 'logo')} />
+                <img src={item.logo} alt="" width="40" height="40" loading="lazy" class="max-h-full w-auto object-contain" data-tina-field={tinaField(item, 'logo')} />
               </span>
             )}
             <span class="text-sm leading-snug">

@@ -17,7 +17,7 @@ const { data } = Astro.props;
   <ol class="mt-12 border-t border-black/20">
     {compact(data.items).map((item, index) => (
       <li class="grid gap-5 border-b border-black/20 py-8 sm:grid-cols-[4rem_1fr] sm:items-center sm:gap-8 lg:grid-cols-[6rem_0.8fr_1.2fr] lg:py-10" style={`--reveal-index: ${index}`} data-reveal data-tina-field={tinaField(item)}>
-        <p class="text-sm font-bold tabular-nums text-gray-500">0{index + 1}</p>
+        <p class="text-sm font-bold tabular-nums text-gray-600">0{index + 1}</p>
         <h3 class="text-xl leading-tight font-extrabold tracking-tight text-balance xl:text-2xl" data-tina-field={tinaField(item, 'title')}>{item.title}</h3>
         <p class="text-sm leading-relaxed text-gray-700 sm:col-start-2 lg:col-start-3 lg:row-start-1 lg:text-base" data-tina-field={tinaField(item, 'text')}>{item.text}</p>
       </li>

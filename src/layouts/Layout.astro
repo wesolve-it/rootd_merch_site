@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getSettings } from '../lib/data';
 import { islands } from '../lib/islands';
+import '@fontsource-variable/archivo/wght.css';
 import '../styles/global.css';
 
 const settings = (await getSettings()).data?.settings;
@@ -29,9 +30,6 @@ const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL?.trim() || 'https
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={Astro.site} />
     <meta property="og:image" content={ogImage} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..800&display=swap" rel="stylesheet" />
     {umamiWebsiteId && (
       <script
         is:inline

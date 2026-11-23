@@ -2,28 +2,26 @@
 interface Props {
   email?: string | null;
   href?: string;
-  variant?: 'primary' | 'dark';
   class?: string;
   [key: string]: unknown;
 }
 
-const { email, href, variant = 'primary', class: className, ...rest } = Astro.props;
+const { email, href, class: className, ...rest } = Astro.props;
 const destination = href ?? (email ? `mailto:${email}` : '#anfrage');
 ---
 
 <a
   href={destination}
   class:list={[
-    'group inline-flex min-h-12 items-center gap-2 rounded-sm px-6 text-sm font-bold text-white',
-    'transition-colors duration-200',
-    variant === 'primary' ? 'bg-accent hover:bg-accent-dark' : 'bg-ink hover:bg-black',
+    'group inline-flex min-h-12 items-center gap-2 rounded-sm bg-ink px-6 text-sm font-bold text-white',
+    'transition-colors duration-200 hover:bg-black',
     className,
   ]}
   {...rest}
 >
   <slot />
   <svg
-    class="size-4 transition-transform duration-200 group-hover:translate-x-1"
+    class="size-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
     viewBox="0 0 16 16"
     fill="none"
     aria-hidden="true"

@@ -21,7 +21,7 @@ const email = (await getSettings()).data?.settings?.email;
 ---
 
 {home && (
-  <div id="main-content" tabindex="-1">
+  <main id="main-content" tabindex="-1" class="outline-none">
     {home.hero && <Hero data={home.hero} />}
     {home.customers?.show && <CustomerLogos data={home.customers} />}
     {home.services?.show && <Services data={home.services} />}
@@ -31,5 +31,5 @@ const email = (await getSettings()).data?.settings?.email;
     {home.process?.show && <Process data={home.process} />}
     {home.faq?.show && <Faq data={home.faq} />}
     {home.inquiry?.show && <Inquiry data={home.inquiry} email={email} />}
-  </div>
+  </main>
 )}

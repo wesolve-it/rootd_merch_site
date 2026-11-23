@@ -22,7 +22,7 @@ const sizes: Record<string, string> = {
   <div class="mx-auto mb-8 max-w-screen-2xl px-6">
     <SectionHeading section={data} />
   </div>
-  <div class="group overflow-hidden border-y border-black/10 bg-white py-4 focus:outline-none" role="region" aria-label="Durchlaufende Auswahl unserer Kundenlogos. Die Animation pausiert bei Fokus oder wenn der Mauszeiger darüber liegt." tabindex="0">
+  <div class="group overflow-hidden border-y border-black/10 bg-white py-4" role="region" aria-label="Durchlaufende Auswahl unserer Kundenlogos. Die Animation pausiert bei Fokus oder wenn der Mauszeiger darüber liegt." tabindex="0">
     <div class="flex w-max animate-logo-scroll items-center group-hover:[animation-play-state:paused] group-focus:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none">
       {[false, true].map((duplicate) => (
         <ul
@@ -38,7 +38,7 @@ const sizes: Record<string, string> = {
                 src={logo.image}
                 alt={duplicate ? '' : logo.name}
                 loading="lazy"
-                class:list={['max-w-full object-contain grayscale', sizes[logo.size ?? 'md'] ?? sizes.md]}
+                class:list={['max-w-full object-contain', sizes[logo.size ?? 'md'] ?? sizes.md]}
               />
             </li>
           ))}

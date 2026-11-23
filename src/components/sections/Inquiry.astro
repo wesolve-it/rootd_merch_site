@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { data, email } = Astro.props;
-const fieldClass = 'mt-2 min-h-12 w-full rounded-control border border-black/20 bg-white px-4 py-3 text-base text-ink shadow-sm outline-none placeholder:text-gray-500 focus:border-accent';
+const fieldClass = 'mt-2 min-h-12 w-full rounded-control border border-black/20 bg-white px-4 py-3 text-base text-ink shadow-sm placeholder:text-gray-500 focus:border-ink';
 ---
 
 <section id="anfrage" class="bg-soft px-6 py-20 xl:py-28">
@@ -90,7 +90,7 @@ const fieldClass = 'mt-2 min-h-12 w-full rounded-control border border-black/20 
         {email && (
           <a
             href={`mailto:${email}`}
-            class="text-sm font-bold underline underline-offset-4"
+            class="inline-flex min-h-11 items-center text-sm font-bold underline underline-offset-4"
             data-umami-event="email_click"
             data-umami-event-location="inquiry"
           >Lieber per E-Mail</a>

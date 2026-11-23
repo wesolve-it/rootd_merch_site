@@ -2,6 +2,7 @@
 import { tinaField } from '@tinacms/astro/tina-field';
 import type { Home } from '../../lib/data';
 import { compact } from '../../lib/data';
+import { netlifySrcSet } from '../../lib/images';
 
 interface Props {
   data: NonNullable<Home['projects']>;
@@ -9,11 +10,7 @@ interface Props {
 
 const { data } = Astro.props;
 const images = compact(data.images).filter((img) => img.image);
-const srcSet = (src: string) => process.env.NETLIFY
-  ? [360, 600, 900]
-      .map((width) => `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&q=82 ${width}w`)
-      .join(', ')
-  : undefined;
+const srcSet = (src: string) => netlifySrcSet(src, [360, 600, 900]);
 ---
 
 <section id="projekte" class="bg-ink px-6 py-20 text-white xl:py-28" data-theme="dark" data-projects-section>
@@ -43,7 +40,7 @@ const srcSet = (src: string) => process.env.NETLIFY
             width="750"
             height="750"
             loading="lazy"
-            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100"
           />
           {(img.customer || img.product || img.finish) && (
             <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-4 pt-16 pb-4 md:px-5 md:pb-5" aria-hidden="true">
